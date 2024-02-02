@@ -1,0 +1,31 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 99%;
+}
+
+#search-box{
+    width: 18vw;
+    height: 2.4vw;
+    border: 0.12vw solid black;
+    border-radius: 1.5vw; 
+    padding: 0 1vw;   
+
+}
+.search-btn{
+    position: absolute;
+    background-color: #E5C643;
+    padding: 0.3vw;
+    border-radius:0 1.3vw 1.3vw 0;
+    top: 2.6vw;
+    left: 57.7vw;
+    color: white;
+    width: 3vw;
+
+}
+.logo img{
+    height: 6vw;
+    /* width: 9vw; */
+
+}

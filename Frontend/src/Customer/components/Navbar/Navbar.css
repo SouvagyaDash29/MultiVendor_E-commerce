@@ -1,0 +1,24 @@
+.navbar-section{
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    align-items: center;
+    /* background-color: #E5C643; */
+    padding: 0.5vw 0px ;
+    border-radius: 0.8vw;
+    
+    
+}
+.nav-list{
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: black;
+}
+.fashion{
+    
+}
+.fashion img{
+    width: 5%;
+}
