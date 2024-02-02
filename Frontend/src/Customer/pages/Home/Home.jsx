@@ -1,9 +1,10 @@
 import React from 'react'
+import PromotionBanner from '../../components/Carousel/PromotionBanner';
 
 const Home = () => {
   return (
     <div>
-      Home
+      <PromotionBanner />
     </div>
   )
 }

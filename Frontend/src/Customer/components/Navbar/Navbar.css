@@ -6,6 +6,7 @@
     /* background-color: #E5C643; */
     padding: 0.5vw 0px ;
     border-radius: 0.8vw;
+    height: 8vw;
     
     
 }
@@ -16,9 +17,20 @@
     font-weight: 500;
     color: black;
 }
-.fashion{
-    
+/* .nav-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease-in-out;
+
+} */
+.nav-list img{
+    width: 5.5vw;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+  
 }
-.fashion img{
-    width: 5%;
-}
+/* .nav-list:hover{
+    transform: scale(1.1);
+} */

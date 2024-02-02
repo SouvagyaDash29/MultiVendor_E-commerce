@@ -1,0 +1,29 @@
+.fashion-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 600;
+    transition: transform 0.3s ease-in-out;
+    
+}
+.fashion-dropdown{
+    display: flex;
+    align-items: center;
+    
+}
+.fashion-arrow{
+    font-size: 1.4vw;
+}
+.fashion-section:hover .fashion-arrow{
+    transform: rotate(180deg);
+    
+}
+.fashion-section:hover {
+    transform: scale(1.07);
+}
+.fashion-list{
+    display: none;
+}
+.fashion-section:hover .fashion-list{
+    display: inline;
+}
