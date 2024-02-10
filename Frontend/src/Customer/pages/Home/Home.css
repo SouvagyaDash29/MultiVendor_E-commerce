@@ -5,6 +5,9 @@
     margin-right: auto;
 
 }
+.Bestselling-section h3{
+  margin-bottom: 1.8vw;
+}
 
 .Bestselling-item{
     display: flex;
@@ -80,27 +83,27 @@ del{
     justify-content: space-between;
   
   }
-  .d-style:hover{
-    transform: scale(1.02);
+  .d-content:hover{
+    transform: scale(1.1);
   }
   .d-content{
     text-align: center;
+    font-size: 1vw;
+    padding: 1vw;
+    color: #041212;
+    transition: all 0.2s ease-in-out;
+
   }
   .d-content h5{
-    font-size: 1vw;
     font-weight: 700;
   }
   .d-content h6{
-    font-size: 0.9vw;
+    font-size: 0.8vw;
     color: #E55604;
   }
   .d-content img{
     width: 7vw;
     aspect-ratio: 3/2;
     object-fit: contain;
-  }
-  .d-style a{ 
-    color: #041212;
-  
   }
   

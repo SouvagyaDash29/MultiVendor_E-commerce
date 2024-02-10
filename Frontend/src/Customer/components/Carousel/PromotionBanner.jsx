@@ -26,21 +26,17 @@ const PromotionBanner = () => {
          <div className='banner'>
        
         <Slider {...settings} className='slider'>
-          {/* <div className='slides'> */}
+
             <img src="../../assets/Tv_1.webp" alt="img" />
-          {/* </div> */}
-          {/* <div className='slides'> */}
+
             <img src="../../assets/phone_1.webp" alt="img" />
-          {/* </div> */}
-          {/* <div className='slides'> */}
+
             <img src="../../assets/phone_2.webp" alt="img" />
-          {/* </div> */}
-          {/* <div className='slides'> */}
+
             <img src="../../assets/phone_4.jpg" alt="img" />
-          {/* </div> */}
-          {/* <div className='slides'> */}
+
             <img src="../../assets/phone_5.jpg" alt="img" />
-          {/* </div> */}
+          
         </Slider>
       </div>
     </>

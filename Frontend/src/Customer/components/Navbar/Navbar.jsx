@@ -1,25 +1,11 @@
 import React from "react";
-// import { NavLink } from 'react-router-dom';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  NavLink,
-} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import "./Navbar.css";
-import Home from "../../pages/Home/Home";
-import Fashion from "../../pages/Fashion/Fashion";
-import Electronics from "../../pages/Electronics/Electronics";
-import Mobiles from "../../pages/Mobiles/Mobiles";
-import Furniture from "../../pages/Furniture/Furniture";
-import Applience from "../../pages/Appliance/Appliance";
-import Grocery from "../../pages/Grocery/Grocery";
-// import FashionDropdown from "../../Dropdown/FashionDropdown";
 
 const Navbar = () => {
   return (
-    <Router>
+    <>
       <nav>
         <ul className="nav-section">
           <li className="nav-list">
@@ -40,7 +26,7 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li className="nav-list">
-            <NavLink to="/ELectronic" className="nav-item">
+            <NavLink to="/Electronics" className="nav-item">
               <img src="../assets/Electroni-nav.webp" alt="img" />
               <div className="item">
                 Electronic <MdKeyboardArrowDown fontSize="1.2vw"/>
@@ -73,18 +59,8 @@ const Navbar = () => {
           </li>
         </ul>
       </nav>
-      <Routes>
-        <Route path="/">
-          <Route index element={<Home />} />
-          <Route path="/Fashion" element={<Fashion />} />
-          <Route path="/Mobiles" element={<Mobiles />} />
-          <Route path="/Electronics" element={<Electronics />} />
-          <Route path="/Furniture" element={<Furniture />} />
-          <Route path="/Applience" element={<Applience />} />
-          <Route path="/Grocery" element={<Grocery />} />
-        </Route>
-      </Routes>
-    </Router>
+
+    </>
   );
 };
 

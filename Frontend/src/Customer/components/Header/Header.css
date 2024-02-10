@@ -2,31 +2,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* width: 99%; */
+    width: 97%;
+    margin-left: auto;
+    margin-right: auto;
     font-family: sans-serif;
 
 }
 
 #search-box{
-    width: 33vw;
+    width: 30vw;
     height: 2.4vw;
     border: 0.12vw solid black;
     border-radius: 1vw; 
     padding: 0 4vw 0 1vw;
     font-size: 1vw;
-    margin-left: 10vw;   
+    margin-left: 10vw;
 
 }
-.search-btn{
-    position: relative;
-    background-color: #E5C643;
-    padding: 0.27vw;
-    border-radius:0 1vw 1vw 0;
-    top: 0.7vw;
-    left: -3.65vw;
-    color: white;
-    width: 3vw;
-
+.search svg{
+   cursor: pointer;
 }
 .logo img{
     height: 6vw;
@@ -36,9 +30,11 @@
 .login-section{
     display: flex;
     align-items: center;
-    /* width: 8%; */
     justify-content: space-around;
     gap: 0.3vw;
+    font-size: 1.15vw;
+    font-weight: 500;
+    cursor: pointer;
 }
 .login-section:hover .login-arrow{
     animation: myAnim2 0.3s ease 0s 1 alternate forwards;
@@ -53,15 +49,13 @@
 	}
 }
 .cart-btn{
-    /* width: 10%; */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.2vw;
-    font-weight: 600;
+    font-size: 1.15vw;
+    font-weight: 500;
     gap: 0.2vw;
-    /* width: 5%; */
-
+    cursor: pointer;
     
 }
 .seller-section{
@@ -70,6 +64,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: 1.1vw;
-    font-weight: 600;
+    font-weight: 500;
     gap: 0.8vw;
+    cursor: pointer;
 }

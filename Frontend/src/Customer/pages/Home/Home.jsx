@@ -8,24 +8,25 @@ import  Deals from '../../Json/Deals.json';
 
 const Home = () => {
   return (
+    <>
     <div className='home'>
       <PromotionBanner />
       <div className="Bestselling-section">
         <h3>Best Selling</h3>
         <div className="Bestselling-item">
-          {Bestselling.map((selling, index) => {
+          {Bestselling.map((product, index) => {
             return (
               <div className="Bestselling-product" key={index}>
-                <Link to={selling.Link} style={{ textDecoration: "none" }}>
+                <Link to={product.Link} style={{ textDecoration: "none" }}>
                   <div className="product">
                     <label className="discount-tag" style={{ color: "#F5F5F5" }}>
-                      {selling.discount}
+                      {product.discount}
                     </label>
-                    <img src={selling.image} alt="img" />
-                    <h4>{selling.name}</h4>
+                    <img src={product.image} alt="img" />
+                    <h4>{product.name}</h4>
                     <div className="price-section">
-                      <label>{selling.price}</label>
-                      <label><del>{selling.price1}</del></label>
+                      <label>{product.price}</label>
+                      <label><del>{product.price1}</del></label>
                     </div>
                   </div>
                 </Link>
@@ -37,19 +38,19 @@ const Home = () => {
       <div className="Bestselling-section">
         <h3>Hot Prices</h3>
         <div className="Bestselling-item">
-          {Bestselling.map((selling, index) => {
+          {Bestselling.map((product, index) => {
             return (
               <div className="Bestselling-product" key={index}>
-                <Link to={selling.Link} style={{ textDecoration: "none" }}>
+                <Link to={product.Link} style={{ textDecoration: "none" }}>
                   <div className="product">
                     <label className="discount-tag" style={{ color: "#F5F5F5" }}>
-                      {selling.discount}
+                      {product.discount}
                     </label>
-                    <img src={selling.image} alt="img" />
-                    <h4>{selling.name}</h4>
+                    <img src={product.image} alt="img" />
+                    <h4>{product.name}</h4>
                     <div className="price-section">
-                      <label>{selling.price}</label>
-                      <label><del>{selling.price1}</del></label>
+                      <label>{product.price}</label>
+                      <label><del>{product.price1}</del></label>
                     </div>
                   </div>
                 </Link>
@@ -63,7 +64,7 @@ const Home = () => {
         <div className="deal-section">
           {Deals.map((deal, index) => {
             return (
-              <div key={index} className="d-style">
+              <div key={index}>
                 <Link to={deal.Link}  style={{ textDecoration: "none" }}>
                   <div className="d-content">
                     <img src={deal.image} alt="img" />
@@ -78,6 +79,7 @@ const Home = () => {
       </div>
       
     </div>
+    </>
   )
 }
 
