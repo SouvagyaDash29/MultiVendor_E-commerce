@@ -5,6 +5,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import "./Header.css";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdStorefront } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 // import Navbar from "./Navbar";
 
 const Header = () => {
@@ -12,8 +13,9 @@ const Header = () => {
     <>
       <header className="header">
         <div className="logo">
-           
+          <NavLink to="/">
             <img src="../assets/Quick_Mart_Logo.png" alt="img" />
+          </NavLink>
         </div>
         <div className="search">
           <input
@@ -25,16 +27,17 @@ const Header = () => {
           <MdSearch fontSize="1.6vw" className="search-btn" />
         </div>
         <div className="login-section">
-          <FaRegUserCircle fontSize="1.4vw" />
-          <h3>Login</h3>
-          <IoIosArrowDown fontSize="1.2vw" className="login-arrow"/>
+          <FaRegUserCircle fontSize="1.2vw" />
+          Login
+          <IoIosArrowDown fontSize="1.2vw" className="login-arrow" />
         </div>
         <div className="cart-btn">
-          <IoCartOutline fontSize="2.2vw" />Cart
+          <IoCartOutline fontSize="1.8vw" />
+          Cart
         </div>
         <div className="seller-section">
-        <MdStorefront fontSize="1.9vw"/>
-        Become a Seller
+          <MdStorefront fontSize="2vw" />
+          Become a Seller
         </div>
       </header>
     </>
