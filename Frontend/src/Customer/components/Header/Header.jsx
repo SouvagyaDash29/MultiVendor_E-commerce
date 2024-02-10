@@ -12,7 +12,8 @@ const Header = () => {
     <>
       <header className="header">
         <div className="logo">
-          <img src="../assets/Quick_Mart_Logo.png" alt="img" />
+           
+            <img src="../assets/Quick_Mart_Logo.png" alt="img" />
         </div>
         <div className="search">
           <input
@@ -26,7 +27,7 @@ const Header = () => {
         <div className="login-section">
           <FaRegUserCircle fontSize="1.4vw" />
           <h3>Login</h3>
-          <IoIosArrowDown fontSize="1.2vw" />
+          <IoIosArrowDown fontSize="1.2vw" className="login-arrow"/>
         </div>
         <div className="cart-btn">
           <IoCartOutline fontSize="2.2vw" />Cart

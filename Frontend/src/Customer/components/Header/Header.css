@@ -36,16 +36,32 @@
 .login-section{
     display: flex;
     align-items: center;
-    width: 8%;
+    /* width: 8%; */
     justify-content: space-around;
+    gap: 0.3vw;
+}
+.login-section:hover .login-arrow{
+    animation: myAnim2 0.3s ease 0s 1 alternate forwards;
+}
+@keyframes myAnim2 {
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(-180deg);
+	}
 }
 .cart-btn{
-    width: 10%;
+    /* width: 10%; */
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1.2vw;
-    width: 5%;
+    font-weight: 600;
+    gap: 0.2vw;
+    /* width: 5%; */
+
     
 }
 .seller-section{
@@ -53,6 +69,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: larger;
-    font-weight: 500;
+    font-size: 1.1vw;
+    font-weight: 600;
+    gap: 0.8vw;
 }
