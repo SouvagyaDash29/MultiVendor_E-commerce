@@ -1,0 +1,35 @@
+[
+    {
+        "name": "Glass Wooden Table",
+        "image": "https://i.ibb.co/3mK7J39/images-removebg-preview-1.png",
+        "price": "$30.00",
+        "price1": "40.00",
+        "discount": "-10%",
+        "Link": "/Furniture"
+    },
+    {
+        "name": "Wooden Lamp",
+        "image": "https://i.ibb.co/s5dH8H6/71cc-Nxo9rt-L-1.png",
+        "price": "$30.00",
+        "price1": "40.00",
+        "discount": "-30%",
+        "Link": "/Furniture"
+    },
+    {
+        "name": "Plate Rack",
+        "image": "https://i.ibb.co/JdvL6vh/plate-rack-5000-1-removebg-preview-1.png",
+        "price": "$30.00",
+        "price1": "40.00",
+        "discount": "-20%",
+        "Link":"/Applience"
+    },
+    {
+        "name": "Pressure cooker set",
+        "image": "https://i.ibb.co/JdVJx2M/1-5-3-2-pressure-cooker-pressure-pan-snapple-original-imagh3hjuuxyujnc-removebg-preview-1.png",
+        "price": "$30.00",
+        "price1": "40.00",
+        "discount": "-40%",
+        "Link":"/PressureCooker"
+    }
+    
+]

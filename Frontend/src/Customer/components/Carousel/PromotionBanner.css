@@ -1,20 +1,21 @@
 .banner{
     position: relative;
-    left: 3vw;
+    left: 7vw;
+    /* background-color: black; */
+    width: 85%;
 }
 .slider{
-    width: 95%;
+    width: 100%;
 }
-
-.slides img{
+/* .slides img{
     width: 100vw;
-  /* margin: 0; */
-  /* padding: 0 2vw; */
+  margin: 0;
+  padding: 0 2vw;
   height:40vh;
-  aspect-ratio: 3/2;
+  aspect-ratio: 16/9;
   object-fit: contain;
-}
+} */
 .slick-slider .slick-prev::before,
 .slick-slider .slick-next::before{
-    color: red;
+    color: rgb(255, 0, 0);
 }

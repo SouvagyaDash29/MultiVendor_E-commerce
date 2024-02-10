@@ -1,0 +1,26 @@
+/* Dropdown.css */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+  }
+  
+  .menu-item {
+    cursor: pointer;
+    padding: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Show dropdown on hover */
+  .dropdown:hover {
+    display: block;
+  }
+  
