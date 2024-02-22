@@ -1,0 +1,13 @@
+.Navbar ul{
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+}
+.Navbar ul li a{
+    text-decoration: none;
+    color: black;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.96vw;
+    font-weight: 500;
+
+}
