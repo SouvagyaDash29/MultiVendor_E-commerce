@@ -34,7 +34,9 @@
     display: flex;
     align-items: center;
 }
-
+.section-heading span:active{
+    color: red;
+}
 .product-section{
     display: flex;
     justify-content: space-between;
