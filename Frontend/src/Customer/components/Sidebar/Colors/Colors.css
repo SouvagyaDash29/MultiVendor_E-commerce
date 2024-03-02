@@ -1,0 +1,7 @@
+.color-title {
+    margin-top: 2rem;
+  }
+  .sidebar-label-color label{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
