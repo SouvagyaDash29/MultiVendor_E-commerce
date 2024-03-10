@@ -1,9 +1,9 @@
 import React from 'react'
 import './Category.css'
-import Input from '../../Input/Input'
+import Input from '../SidebarComponets/Input/Input'
 
 
-const Category = (handleChange) => {
+const Category = ({handleChange}) => {
   return (
     <div>
       <h2 className='sidebar-title'> Category</h2>
@@ -34,8 +34,8 @@ const Category = (handleChange) => {
         />
         <Input 
         handleChange={handleChange}
-        value="heals"
-        title="Heals"
+        value="heels"
+        title="Heels"
         name="test"
         />
 
