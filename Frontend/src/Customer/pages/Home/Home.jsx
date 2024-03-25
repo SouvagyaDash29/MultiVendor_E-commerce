@@ -34,7 +34,8 @@ const arrival = [
 
 const Home = () => {
   return (
-    <div>
+    <>
+    <div className="Home-section">
       <Carosel />
       <div className="categorie-section">
         <ul>
@@ -113,6 +114,7 @@ const Home = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
