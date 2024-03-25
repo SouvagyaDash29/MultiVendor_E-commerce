@@ -8,10 +8,10 @@ const Colors = ({handleChange}) => {
       <h2 className="sidebar-title color-title">Colors</h2>
 
       <div className="sidebar-label">
-      <lable className="sidebar-label-container">
+      <label className="sidebar-label-container">
           <input onChange={handleChange} type="radio" value="" name="test2" />
           <span className='checkmark all'></span> All
-        </lable>
+        </label>
 
        <Input 
        handleChange={handleChange}
