@@ -9,15 +9,15 @@ const Fashion = () => {
   const [selectCategory, setSelectCategory] = useState(null);
 
   //---------Input Filter--------
-  const [query, setQuery] = useState("");
+  // const [query, setQuery] = useState("");
 
-  const handleInputChange = (event) => {
-    setQuery(event.target.value);
-  };
+  // const handleInputChange = (event) => {
+  //   setQuery(event.target.value);
+  // };
 
-  const filteredItems = products.filter((product) =>
-    product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
-  );
+  // const filteredItems = products.filter((product) =>
+  //   product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
+  // );
 
   //---------Radio Filter--------
   const handleChange = (event) => {
@@ -33,9 +33,9 @@ const Fashion = () => {
     let filteredProducts = products;
 
     //Filtering input items
-    if (query) {
-      filteredProducts = filteredItems;
-    }
+    // if (query) {
+    //   filteredProducts = filteredItems;
+    // }
 
     //Selected Filter
 
@@ -51,9 +51,10 @@ const Fashion = () => {
     }
 
     return filteredProducts.map(
-      ({ img, title, star, reviews, newPrice, prevPrice }) => (
+      ({ id, img, title, star, reviews, newPrice, prevPrice }) => (
         <Card
-          key={Math.random()}
+          key={id}
+          id={id}
           img={img}
           title={title}
           star={star}
@@ -65,14 +66,15 @@ const Fashion = () => {
     );
   }
 
-  const result = filteredData(products, selectCategory, query);
+  const result = filteredData(products, selectCategory);
+  // console.log(result);
 
   return (
-    <div>
+    <>
       <Sidebar handleChange={handleChange} />
-      <Brands handleClick={handleClick}/>
-      <Product result={result}/>
-    </div>
+      <Brands handleClick={handleClick} />
+      <Product result={result} />
+    </>
   );
 };
 
