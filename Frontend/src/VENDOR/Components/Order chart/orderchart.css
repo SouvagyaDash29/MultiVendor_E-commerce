@@ -1,0 +1,16 @@
+.donut-chart-container{
+    position: absolute;
+    background-color:#FBFFFE;
+    Width:
+    292px;
+    Height:355.51px;
+   Top:486.86px;
+   Left:1164px;
+border-radius: 19.5px;
+}
+
+.Order-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

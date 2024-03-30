@@ -1,0 +1,118 @@
+#sidebar {
+  grid-area: sidebar;
+  height: 200vh; /* Updated */
+  background: #F0F3F4;
+  left: 12px;
+  color: black;
+  overflow-y: auto;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  border-radius: 9px;
+  box-sizing: border-box;
+  position: fixed;
+  max-height: 708px;
+  top: 5px;
+   width: 334px;
+ bottom: 0px;
+}
+.font-w600{
+  position: absolute;
+  left: 52px;
+  top: 530px;
+}
+.UserProfileImage{
+  position: absolute;
+  left: 90px;
+  top: 550px;
+  height: 100px;
+}
+
+  .dashboard-svg{
+    Width:
+31px;
+Height:
+25px;
+Top:
+228.5px;
+Left:
+89px;
+  }
+  
+  .sidebar-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px 0px 30px;
+    margin-bottom: 30px;
+  }
+  
+  .sidebar-title > span {
+    display: none;
+  }
+  
+  .sidebar-brand {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  .sidebar-list {
+    padding: 0;
+    list-style-type: none;
+    
+  }
+  
+  .sidebar-list-item {
+    padding: 20px 20px 20px 20px;
+    font-size: 18px;
+   
+   
+  }
+  
+  .sidebar-list-item:hover {
+    background-color: rgba(0, 0, 0, 0.819);
+    color: white; /* Change text color to white */
+    cursor: pointer;
+    border-radius: 19.5px;
+  }
+  
+  
+  .sidebar-list-item > a {
+    text-decoration: none;
+    color: #9e9ea4;
+  }
+  .sidebar-list-item > a:hover {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .sidebar-responsive {
+    display: inline !important;
+    position: fixed;
+    /*
+      we want the z-index of the sidebar higher so that
+      the charts are not showing over the sidebar 
+      on small screens
+    */
+    z-index: 12 !important;
+  }
+  /* Add this rule to style the anchor elements inside .sidebar-list-item */
+  .sidebar-list-item > a {
+    text-decoration: none;
+    color: black; /* Change text color to black */
+  }
+
+  .sidebar-text{
+    display: flex;
+  }
+  
+  .dashboard-svg:hover path {
+    fill: white; /* Color on hover */
+  }
+
+  
+  /* Rest of your existing CSS */
+  
+  
+  /* End Sidebar  */
+  

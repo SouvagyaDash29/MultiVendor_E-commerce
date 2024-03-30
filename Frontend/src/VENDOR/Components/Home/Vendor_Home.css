@@ -1,0 +1,18 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    height: 100%;
+  }
+  
+  .dashboard-content {
+    display: flex;
+    flex-wrap: wrap; /* Allow elements to wrap to the next line if there's not enough space */
+    gap: 20px; /* Add some space between the dashboard components */
+    justify-content: center; /* Horizontally center the components */
+  }
+  
+  /* Styles for individual dashboard components (SalesComponent, GraphComponent, etc.) can be added here */
+  

@@ -1,0 +1,16 @@
+.graph-container{
+    position: absolute;
+    background-color: #FBFFFE;
+  
+    border-radius: 19.5px;
+    Width:716.6px;
+     Height:320px;
+   top:505px;
+   Left:390px;
+}
+
+.Graph-heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
