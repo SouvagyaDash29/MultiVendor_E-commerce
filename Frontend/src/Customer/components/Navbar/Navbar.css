@@ -1,3 +1,7 @@
+.Navbar{
+    padding: 0.9vw 0;
+    border-bottom: 0.12vw solid #e5e5e5;
+}
 .Navbar ul{
     display: flex;
     justify-content: space-evenly;

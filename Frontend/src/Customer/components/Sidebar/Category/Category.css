@@ -1,0 +1,80 @@
+.sidebar-title {
+    font-size: 1.2vw;
+    font-weight: 500;
+    margin-bottom: 1vw;
+  }
+  
+  .sidebar-label{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.3vw;
+  }
+  .sidebar-label label{
+    font-size: 0.9vw;
+  }
+  
+  .sidebar-label-container {
+    display: block;
+    position: relative;
+    padding-left: 2.3vw;
+    margin-bottom: 0.8vw;
+    cursor: pointer;
+    font-size: 1vw;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .sidebar-label-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0.6vw;
+    height: 1.1vw;
+    width: 1.1vw;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  .all {
+    background: linear-gradient(blue, crimson);
+  }
+  
+  .sidebar-label-container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  .sidebar-label-container input:checked ~ .checkmark {
+    background-color: #2196f3;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .sidebar-label-container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  .sidebar-label-container .checkmark:after {
+    top: 0.31vw;
+    left: 0.32vw;
+    width: 0.5vw;
+    height: 0.5vw;
+    border-radius: 50%;
+    background: white;
+  }
+  
+  .line {
+    margin-top: 3rem;
+    border-color: #f7f7f7;
+  }
+  

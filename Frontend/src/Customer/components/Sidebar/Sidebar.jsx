@@ -1,25 +1,24 @@
-import React from 'react'
-import './Sidebar.css';
-import SidebarCategory from "./Category/SidebarCategory";
+import React from "react";
+import "./Sidebar.css";
+import Category from "./Category/Category";
 import Price from "./Price/Price";
 import Colors from "./Colors/Colors";
 
-
-const Sidebar = () => {
+const Sidebar = ({handleChange}) => {
   return (
     <>
-    <section className='sidebar'>
+      <section className="sidebar">
         <div className="logo-container">
-            <h1>🛒</h1>
-            <div>
-                <SidebarCategory />
-                <Price />
-                <Colors />
-            </div>
-        </div>
-    </section>
+          <h1>🛒</h1>
+          </div>
+            <Category handleChange={handleChange}/>
+            <Price handleChange={handleChange}/>
+            <Colors handleChange={handleChange}/>
+          
+        
+      </section>
     </>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
