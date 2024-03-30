@@ -1,12 +1,15 @@
 import React from "react";
 // import { AiFillStar } from "react-icons/ai";
 import Cart from "../../../../../assets/svg/Group 1269.svg";
+import { Link } from "react-router-dom";
 
-const Card = ({ img, title, star, reviews, newPrice, prevPrice }) => {
+const Card = ({ id, img, title, star, reviews, newPrice, prevPrice }) => {
   return (
     <>
-      <section className="card">
-        <img src={img} alt={title} className="card-img" />
+      <section className="card" key={id}>
+        <Link to={`/Product/${id}`}>
+          <img src={img} alt={title} className="card-img" />
+        </Link>
         <div className="card-details">
           <h3 className="card-title">{title}</h3>
           <section className="card-reviews">
@@ -18,8 +21,8 @@ const Card = ({ img, title, star, reviews, newPrice, prevPrice }) => {
           </section>
           <section className="card-price">
             <div className="price">
+              ${newPrice}
               <del>{prevPrice}</del>
-              {newPrice}
             </div>
             <div className="bag">
               <img src={Cart} alt="cart-button" />

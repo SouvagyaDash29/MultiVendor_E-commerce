@@ -1,6 +1,10 @@
 .Navbar{
     padding: 0.9vw 0;
     border-bottom: 0.12vw solid #e5e5e5;
+    position: sticky;
+    top: 6.68vw;
+    background-color: white;
+    z-index: 4;
 }
 .Navbar ul{
     display: flex;

@@ -35,85 +35,85 @@ const arrival = [
 const Home = () => {
   return (
     <>
-    <div className="Home-section">
-      <Carosel />
-      <div className="categorie-section">
-        <ul>
-          <li>
-            <NavLink to="/*">Man</NavLink>
-          </li>
-          <li>
-            <NavLink to="/*">Women</NavLink>
-          </li>
-          <li>
-            <NavLink to="/*">Kid</NavLink>
-          </li>
-          <li>
-            <NavLink to="/*">Watch</NavLink>
-          </li>
-          <li>
-            <NavLink to="/*">Shoes</NavLink>
-          </li>
-          <li>
-            <NavLink to="/*">Mobiles</NavLink>
-          </li>
-        </ul>
-      </div>
-      <div className="New-arrival-section">
-        <div className="section-heading">
-          New arrivals
-          <span>
-            See More
-            <MdOutlineKeyboardDoubleArrowRight />
-          </span>
+      <div className="Home-section">
+        <Carosel />
+        <div className="categorie-section">
+          <ul>
+            <li>
+              <NavLink to="/*">Man</NavLink>
+            </li>
+            <li>
+              <NavLink to="/*">Women</NavLink>
+            </li>
+            <li>
+              <NavLink to="/*">Kid</NavLink>
+            </li>
+            <li>
+              <NavLink to="/*">Watch</NavLink>
+            </li>
+            <li>
+              <NavLink to="/*">Shoes</NavLink>
+            </li>
+            <li>
+              <NavLink to="/*">Mobiles</NavLink>
+            </li>
+          </ul>
         </div>
-        <div className="product-section">
-          {arrival.map((product, index) => {
-            return (
-              <div className="products"  key={index}>
-                <div className="product-contanier">
-                  <img src={product.img} alt="img" />
-                </div>
-                <div className="product-detail-section">
-                  <h3>{product.productName}</h3>
-                  <h4>{product.price}</h4>
+        <div className="New-arrival-section">
+          <div className="section-heading">
+            New arrivals
+            <span>
+              See More
+              <MdOutlineKeyboardDoubleArrowRight />
+            </span>
+          </div>
+          <div className="product-section">
+            {arrival.map((product, index) => {
+              return (
+                <div className="products" key={index}>
+                  <div className="product-contanier">
+                    <img src={product.img} alt="img" />
+                  </div>
+                  <div className="product-detail-section">
+                    <h3>{product.productName}</h3>
+                    <h4>{product.price}</h4>
 
-                  <span>Product Details </span>
-                  <img src={cart} alt="icon" />
+                    <span>Product Details </span>
+                    <img src={cart} alt="icon" />
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      </div>
-      <div className="New-arrival-section">
-        <div className="section-heading">
-          Weekly Offers
-          <span>
-            See More
-            <MdOutlineKeyboardDoubleArrowRight />
-          </span>
-        </div>
-        <div className="product-section">
-          {arrival.map((product, index) => {
-            return (
-              <div className="products"  key={index}>
-                <div className="product-contanier">
-                  <img src={product.img} alt="img" />
-                </div>
-                <div className="product-detail-section">
-                  <h3>{product.productName}</h3>
-                  <h4>{product.price}</h4>
+        <div className="New-arrival-section">
+          <div className="section-heading">
+            Weekly Offers
+            <span>
+              See More
+              <MdOutlineKeyboardDoubleArrowRight />
+            </span>
+          </div>
+          <div className="product-section">
+            {arrival.map((product, index) => {
+              return (
+                <div className="products" key={index}>
+                  <div className="product-contanier">
+                    <img src={product.img} alt="img" />
+                  </div>
+                  <div className="product-detail-section">
+                    <h3>{product.productName}</h3>
+                    <h4>{product.price}</h4>
 
-                  <span>Product Details </span>
-                  <img src={cart} alt="icon" />
+                    <span>Product Details </span>
+                    <img src={cart} alt="icon" />
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };

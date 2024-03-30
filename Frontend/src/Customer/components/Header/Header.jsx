@@ -5,14 +5,15 @@ import { FiSearch } from "react-icons/fi";
 import { HiOutlineHeart } from "react-icons/hi2";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { BiUser } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const Header = ({ handleInputChange, query }) => {
   return (
-    <>
+    <div className="header-section">
       <div className="header">
-        <div className="logo-section">
+        <Link to="/" className="logo-section">
           <img src={LoGo} alt="icon" />
-        </div>
+        </Link>
         <div className="search-box">
           <input
             type="text"
@@ -29,7 +30,7 @@ const Header = ({ handleInputChange, query }) => {
         </div>
       </div>
       <hr />
-    </>
+    </div>
   );
 };
 
