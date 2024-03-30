@@ -1,3 +1,10 @@
+.header-section{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 3;
+
+}
 .header{
     width: 97%;
     margin-left: auto;
