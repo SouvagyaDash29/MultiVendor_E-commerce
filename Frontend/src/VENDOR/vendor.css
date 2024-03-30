@@ -1,0 +1,12 @@
+.container-vendor {
+    background-color: #b5c2ca;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%; /* Set height to 100% of the viewport */
+    width: 100%;
+    overflow-x: auto; /* Enable vertical scrolling if content exceeds container height */
+    display: flex;
+    flex-direction: row;
+  }
+  

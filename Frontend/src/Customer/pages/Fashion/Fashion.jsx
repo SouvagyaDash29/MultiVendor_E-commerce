@@ -1,9 +1,11 @@
+
 import React, { useState } from "react";
 import Product from "../../components/Products/Product";
 import Brands from "./FashionBrands/Brands";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import products from "../../DB/data";
 import Card from "../../components/Sidebar/SidebarComponets/Card/Card";
+
 
 const Fashion = () => {
   const [selectCategory, setSelectCategory] = useState(null);
@@ -70,11 +72,14 @@ const Fashion = () => {
   // console.log(result);
 
   return (
-    <>
+
+    <div>
       <Sidebar handleChange={handleChange} />
-      <Brands handleClick={handleClick} />
-      <Product result={result} />
-    </>
+      <Brands handleClick={handleClick}/>
+      <Product result={result}/>
+
+    </div>
+
   );
 };
 

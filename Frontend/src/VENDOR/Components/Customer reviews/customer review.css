@@ -1,0 +1,23 @@
+.customer-reviews{
+    position: absolute;
+    Width:
+    370px;
+    Height:
+    255px;
+    Top:
+    870px;
+    Left:
+    380px;
+  
+    border-radius: 19.5px;
+    background-color: #FBFFFE;
+}
+
+.stars{
+    background-color: #F0F7FF;
+}
+.customer-reviews-heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

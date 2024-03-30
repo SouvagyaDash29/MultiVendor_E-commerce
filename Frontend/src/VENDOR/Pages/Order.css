@@ -1,0 +1,45 @@
+.order-page {
+    padding: 20px;
+  }
+  
+  .order {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .new-order {
+    background-color: #dff0d8; /* Example highlighting color */
+  }
+  .order-item {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .order-item h3 {
+    font-size: 20px;
+    margin: 0 0 10px;
+  }
+  
+  .order-item p {
+    margin: 5px 0;
+  }
+
+  .hello-vendorname{
+    position: absolute;
+    left: 690px;
+    top: 290px;
+  }
+  .vendor-order-heading{
+    position: absolute;
+    left: 720px;
+  }
+
+  .order-date-picker{
+    position: absolute;
+    left: 690px;
+    top: 190px;
+
+  }

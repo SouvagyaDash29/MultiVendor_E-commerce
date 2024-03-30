@@ -19,8 +19,8 @@ import ProductDetails from './components/ProductDetails/ProductDetails';
 
 const Buyer = () => {
   return (
-    <>
-      <Router>
+     <body >
+         <Router>
         <Header />
          <Navbar />
          <Routes>
@@ -33,7 +33,9 @@ const Buyer = () => {
           <Route path="/Product/:id" element={<ProductDetails />} />
          </Routes>
       </Router>
-    </>
+     </body>
+     
+   
   );
 };
 
