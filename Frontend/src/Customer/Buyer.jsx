@@ -17,8 +17,8 @@ import Shoes from "./pages/Shoes/Shoes";
 
 const Buyer = () => {
   return (
-    <>
-      <Router>
+     <body >
+         <Router>
         <Header />
          <Navbar />
          <Routes>
@@ -30,7 +30,9 @@ const Buyer = () => {
           <Route path="/Home Applience" element={<Applience />}/>
          </Routes>
       </Router>
-    </>
+     </body>
+     
+   
   );
 };
 

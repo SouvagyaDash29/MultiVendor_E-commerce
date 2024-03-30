@@ -1,0 +1,75 @@
+/* Common styles */
+.vendor-profile {
+  position: absolute;
+  left: 590px;
+  height: 690px;
+  width: 590px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+/* Profile info */
+.profile-info {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-info img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.profile-info h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+/* Profile details */
+.profile-details {
+  margin-bottom: 20px;
+}
+
+.profile-details p {
+  margin: 5px 0;
+}
+
+/* Vendor sub-details */
+.vendor-subdetails {
+  position: absolute;
+  left: 450px;
+}
+
+/* Vendor profile heading */
+#vendorprofile-heading {
+  position: absolute;
+  top: 90px;
+  left: 195px;
+}
+
+/* Vendor name */
+#vendor-name {
+  position: absolute;
+  left: -299px;
+  top: 10px;
+}
+
+/* Vendor email */
+#vendor-email {
+  position: absolute;
+  top: 80px;
+  left: -299px;
+}
+
+/* Vendor profile photo */
+.vendor-profilephoto {
+  position: absolute;
+  top: 170px;
+  left: 270px;
+}
