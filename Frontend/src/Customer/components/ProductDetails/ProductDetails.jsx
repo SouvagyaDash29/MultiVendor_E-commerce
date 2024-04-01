@@ -52,8 +52,13 @@ const ProductDetails = () => {
               <button>L</button>
             </div>
           </div>
+          <div className="Product-Detail-buttons">
+          <div className="buy-now">
+            <button>BUY NOW</button>
+          </div>
           <div className="Add-to-cart">
             <button>ADD TO CART</button>
+          </div>
           </div>
           <h3>Description</h3>
           <span>It is a very nice product</span>
