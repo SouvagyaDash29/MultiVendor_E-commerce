@@ -15,7 +15,7 @@
     gap: 1vw;
 }
 .product-title{
-    font-size: 2.3vw;
+    font-size: 2vw;
     font-weight: 600;
 }
 .productDetails-price{
@@ -54,11 +54,23 @@
     padding: 0.8vw 0.6vw;
     cursor: pointer;
 }
+.Product-Detail-buttons{
+    display: flex;
+}
 .Add-to-cart button{
     border: none;
     padding: 0.7vw 2vw;
     border-radius: 2vw;
     color: white;
     background-color: #0085FF;
+    cursor: pointer;
+}
+.buy-now button{
+    margin-right: 1.8vw;
+    color: black;
+    background-color: #FFBF46;
+    border: none;
+    padding: 0.7vw 2.8vw;
+    border-radius: 1.5vw;
     cursor: pointer;
 }
