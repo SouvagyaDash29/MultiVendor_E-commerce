@@ -10,8 +10,8 @@ function App() {
   return (
     <div >
          
-     {<Vendor/>}
-      {/* <Buyer /> */}
+     {/* <Vendor/> */}
+      <Buyer />
 
     </div>
   );
