@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Card = ({ id, img, title, star, reviews, newPrice, prevPrice }) => {
   return (
     <>
-      <section className="card" key={id}>
+      <section className="customer-section-card" key={id}>
         <Link to={`/Product/${id}`}>
           <img src={img} alt={title} className="card-img" />
         </Link>

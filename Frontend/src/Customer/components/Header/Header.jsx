@@ -1,28 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import LoGo from "../../../assets/Quick_Mart_Logo.png";
 import { FiSearch } from "react-icons/fi";
 import { HiOutlineHeart } from "react-icons/hi2";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { BiUser } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Header = ({ handleInputChange, query }) => {
+const Header = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    navigate(`/Search/${searchTerm}`);
+    setSearchTerm("");
+
+    console.log({searchTerm});
+  };
   return (
     <div className="header-section">
-      <div className="header">
+      <div className="Header">
         <Link to="/" className="logo-section">
           <img src={LoGo} alt="icon" />
         </Link>
-        <div className="search-box">
+
+        <form onSubmit={handleInputChange} className="search-box">
           <input
             type="text"
             placeholder="Search your Product "
-            onChange={handleInputChange}
-            value={query}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            value={searchTerm}
           />
-          <FiSearch />
-        </div>
+          <FiSearch onClick={handleInputChange}/>
+        </form>
+
         <div className="icon-section">
           <HiOutlineHeart />
           <RiShoppingCartLine />
