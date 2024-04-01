@@ -1,0 +1,63 @@
+.Search-section{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin-top: 0.1vw;
+
+}
+.Search-card-section{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 0.2vw solid #ededed;
+    padding: 1vw 0.3vw;
+    color: black;
+    margin-bottom: 1.5vw;
+    border-radius: 0.2vw;
+}
+.Search-card img{
+    width: 9vw;
+    aspect-ratio: 4/3;
+    object-fit: contain;
+    margin-bottom: 1vw;
+    margin-left: 2vw;
+}
+.Search-card-title{
+    margin-bottom: 1vw;
+    font-size: 1vw;
+}
+.Search-card-reviews{
+    margin-bottom: 1vw;
+    display: flex;
+}
+.Search-price{
+    display: flex;
+    gap: 1.8vw;
+    font-weight: 500;
+}
+.Search-price del{
+    opacity: 0.5;
+}
+.Search-rating-star{
+    color: #d5ab55;
+}
+.Search-total-review{
+    font-size: 0.9vw;
+    margin-left: 1vw;
+}
+.Search-card-price{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.Buy-now button{
+    margin-top: 1vw;
+    color: black;
+    background-color: #FFBF46;
+    border: none;
+    padding: 0.7vw 2.8vw;
+    border-radius: 1.5vw;
+    cursor: pointer;
+}
