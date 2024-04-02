@@ -16,6 +16,11 @@ const Signuppage = () => {
             <input type="text" class="form-control"/>
             <label for="" class="mb-2 mt-2">Email</label>
             <input type="email" class="form-control"/>
+            <label for="" class="mb-2 mt-2">Role</label>
+            <select class="form-control">
+            <option value="customer">Customer</option>
+            <option value="vendor">Vendor</option>
+            </select>
             <label for="" class="mb-2 mt-2">Password</label>
             <input type="password" class="form-control"/>
             <label for="" class="mb-2 mt-2">Confirm Password</label>
