@@ -1,7 +1,8 @@
 import React from "react";
 import './Login.css'
-import loginphoto from './login.png'
+import loginphoto from './login.svg'
 import Signuppage from "../Signup/Signuppage";
+import { Link } from "react-router-dom";
 const LoginPage = () => {
   return <div>
      <div class="parent">
@@ -20,7 +21,7 @@ const LoginPage = () => {
             
         </div>
         <div class="card-footer text-center mt-2">
-            <h6>Do'nt have Account?? <a href="/Signuppage.jsx">SignUp here</a></h6>
+            <h6>Do'nt have Account?? <Link to='/signup'>SignUp here</Link></h6>
         </div>
         <div class="text-center main mt-3">
             <button class="btn btn-outline-warning" id="btn1">Login</button>
