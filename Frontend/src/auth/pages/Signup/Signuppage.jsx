@@ -1,6 +1,7 @@
 import React from 'react'
 import './Signup.css'
-import signupphoto from './download.png'
+import signupphoto from './signup.svg'
+import { Link } from 'react-router-dom'
 const Signuppage = () => {
   return (
     <div>
@@ -27,7 +28,7 @@ const Signuppage = () => {
             <input type="password" class="form-control"/>
         </div>
         <div class="card-footer text-center mt-2" style={{marginLeft:'60px'}}>
-            <h6>Already have Account?? <a href="/loginpage.html">Login here</a></h6>
+            <h6>Already have Account?? <Link to='/login'>Login here</Link></h6>
         </div>
         <div class="text-center main">
             <input type="submit" class="btn btn-outline-primary mt-1" id="btn1"/>
