@@ -21,14 +21,9 @@ function App() {
       {/* <Buyer /> */}
       {/* <Vender /> */}
       <Test />
-
-
     </Router>
     </>
   );
 }
 
 export default App;
-{/* <Vendor/> */ }
-{/* <Buyer /> */ }
-{/* <LoginPage/> */ }
