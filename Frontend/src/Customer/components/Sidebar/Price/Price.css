@@ -1,0 +1,15 @@
+.price-title {
+    margin-top: 0vw;
+  }
+  
+  .ml {
+    /* margin-left: 2vw; */
+  }
+  /* .sidebar-label-price{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5vw;
+}
+.sidebar-label-price label{
+    font-size: 0.85vw;
+} */

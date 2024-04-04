@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.parent{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    /* border: 1px solid; */
+    width: 60%;
+    border-radius: 5%;
+    box-shadow: 2px 2px 40px 5px rgba(0, 0, 0, 0.605);
+    position: absolute;
+    top: 140px;
+    left: 20%;
+}
+img{
+    border-radius: 5%;
+}
+#heading{
+    margin-left: 30px;
+}
+.main{
+    
+    border-radius: 20px;
+   
+}
+#btn1{
+    border-radius:20px;
+   padding: 10px 90px;
+}

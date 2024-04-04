@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,6 +13,10 @@ import Electronics from "./pages/Electronics/Electronics";
 import Watch from './pages/Watch/Watch'; 
 import Applience from "./pages/Applience/Applience";
 import Shoes from "./pages/Shoes/Shoes";
+import ProductDetails from './components/ProductDetails/ProductDetails';
+import SearchItem from "./components/SearchItem/SearchItem";
+import item from "./DB/data"
+
 
 
 const Buyer = () => {
@@ -28,6 +32,8 @@ const Buyer = () => {
           <Route path="/Watch" element={<Watch />}/>
           <Route path="/Shoes" element={<Shoes />}/>
           <Route path="/Home Applience" element={<Applience />}/>
+          <Route path="/Product/:id" element={<ProductDetails />} />
+          <Route path="/Search/:term" element={<SearchItem />} />
          </Routes>
       </Router>
      </body>

@@ -1,6 +1,6 @@
 #sidebar {
   grid-area: sidebar;
-  height: 200vh; /* Updated */
+  height: 200vh; 
   background: #F0F3F4;
   left: 12px;
   color: black;

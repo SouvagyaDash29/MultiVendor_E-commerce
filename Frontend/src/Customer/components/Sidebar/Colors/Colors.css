@@ -1,0 +1,11 @@
+.color-title {
+    /* margin-top: 0.8vw; */
+    margin-left: -1.8vw;
+  }
+  .sidebar-label-color label{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .all{
+    background: linear-gradient(blue, rgb(237, 44, 77),  red, );
+  }

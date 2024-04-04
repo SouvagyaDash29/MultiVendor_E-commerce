@@ -1,4 +1,11 @@
-.header{
+.header-section{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 3;
+
+}
+.Header{
     width: 97%;
     margin-left: auto;
     margin-right: auto;

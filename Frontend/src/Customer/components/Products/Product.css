@@ -1,0 +1,59 @@
+.fashion{
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-container{
+    /* display: flex;
+    flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: fit-content;
+    margin-left: 16.5vw;
+    margin-top: 0.5vw;
+    z-index: 2;
+}
+.customer-section-card{
+    margin: 1vw;
+    border: 0.2vw solid #ededed;
+    padding: 1.2vw;
+    cursor: pointer;
+    color: black;
+}
+.card-img{
+    width: 9vw;
+    aspect-ratio: 4/3;
+    object-fit: contain;
+    margin-bottom: 1vw;
+    margin-left: 2vw;
+}
+.card-title{
+    margin-bottom: 1vw;
+    font-size: 1vw;
+}
+.card-reviews{
+    margin-bottom: 1vw;
+    display: flex;
+}
+.price{
+    display: flex;
+    gap: 1.8vw;
+    font-weight: 500;
+}
+.price del{
+    opacity: 0.5;
+}
+.rating-star{
+    color: #d5ab55;
+}
+.total-review{
+    font-size: 0.9vw;
+    margin-left: 1vw;
+}
+.card-price{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.bag img{
+    width: 2.5vw;
+}
