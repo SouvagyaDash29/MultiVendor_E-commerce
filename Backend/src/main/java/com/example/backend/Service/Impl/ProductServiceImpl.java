@@ -1,0 +1,68 @@
+package com.example.backend.Service.Impl;
+
+import com.example.backend.Exception.ResourseNotFoundException;
+import com.example.backend.Model.Product;
+import com.example.backend.Payload.ProductDto;
+import com.example.backend.Repositary.ProductRepository;
+import com.example.backend.Service.ProductService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+public class ProductServiceImpl implements ProductService {
+
+    @Autowired
+    private ProductRepository productRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
+
+    @Override
+    public ProductDto create(ProductDto productDto) {
+        Product product = modelMapper.map(productDto, Product.class);
+        Product savedProduct = productRepository.save(product);
+        return modelMapper.map(savedProduct, ProductDto.class);
+    }
+
+    @Override
+    public ProductDto update(Long productId, ProductDto productDto) {
+        Product existingProduct = productRepository.findById(productId)
+                .orElseThrow(() -> new ResourseNotFoundException("Product not found with id: " + productId));
+
+        // Update the fields
+        existingProduct.setProductName(productDto.getProductName());
+        existingProduct.setProductDescription(productDto.getProductDescription());
+        existingProduct.setPrice(productDto.getPrice());
+        existingProduct.setBrand(productDto.getBrand());
+        existingProduct.setColor(productDto.getColor());
+
+        Product updatedProduct = productRepository.save(existingProduct);
+        return modelMapper.map(updatedProduct, ProductDto.class);
+    }
+
+    @Override
+    public void delete(Long productId) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new ResourseNotFoundException("Product not found with id: " + productId));
+        productRepository.delete(product);
+    }
+
+    @Override
+    public ProductDto getById(Long productId) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new ResourseNotFoundException("Product not found with id: " + productId));
+        return modelMapper.map(product, ProductDto.class);
+    }
+
+    @Override
+    public List<ProductDto> getAll() {
+        List<Product> products = productRepository.findAll();
+        return products.stream()
+                .map(product -> modelMapper.map(product, ProductDto.class))
+                .collect(Collectors.toList());
+    }
+}
