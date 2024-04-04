@@ -7,10 +7,10 @@ const Signuppage = () => {
     <div>
         <div class="parent">
         <div class="child1">
-            <img src={signupphoto} alt="" height="500px " width="500px"/>
+            <img id='simg' src={signupphoto} alt="" height="500px " width="500px"/>
         </div>
         <div >
-           <h3 class="mt-5" >Create Your Account</h3>
+           <h3 class="mt-5" id='heading' >Create Your Account</h3>
            <form action="">
            <div class="card-body col-md-12" style={{marginRight:'60%'}}>
             <label for="" class="mb-2 mt-2">Name</label>
@@ -31,7 +31,7 @@ const Signuppage = () => {
             <h6>Already have Account?? <Link to='/login'>Login here</Link></h6>
         </div>
         <div class="text-center main">
-            <input type="submit" class="btn btn-outline-primary mt-1" id="btn1"/>
+            <input type="submit" class="btn btn-outline-primary" id="btn1"/>
             </div>
         </form>
         </div>
