@@ -18,10 +18,10 @@ function App() {
   return (
 <>
     <Router>
-      {/* <Buyer /> */}
-      {/* <Vender /> */}
+      <Buyer />
+      <Vender />
       <Test />
-    </Router>
+    </Router> 
     </>
   );
 }
