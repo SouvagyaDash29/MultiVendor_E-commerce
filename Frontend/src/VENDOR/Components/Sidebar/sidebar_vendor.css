@@ -13,7 +13,14 @@
   max-height: 708px;
   top: 5px;
    width: 334px;
+   gap: 5px;
  bottom: 0px;
+}
+.sidebar-text{
+  gap: 5px;
+}
+.sidebar-text svg{
+  font-size: 27px;
 }
 .font-w600{
   position: absolute;
