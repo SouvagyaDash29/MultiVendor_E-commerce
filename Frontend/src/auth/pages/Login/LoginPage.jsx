@@ -10,7 +10,7 @@ const LoginPage = () => {
             <img src={loginphoto} alt="" height="500px " width="500px" class="rounded-lg"/>
         </div>
         <div style={{marginLeft:'20px'}} >
-           <h3 class="mt-5 me-4" >Please Login here!!!!!!</h3>
+           <h3 class="mt-5 me-4" id="heading">Please Login here!!!!!!</h3>
            <div class="card-body me-3" >
             <label for="" class="mb-2 mt-2">Name</label>
             <input type="text" class="form-control"/>
