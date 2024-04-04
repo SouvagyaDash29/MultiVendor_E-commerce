@@ -13,12 +13,12 @@
     top: 140px;
     left: 20%;
 }
-img{
+#simg{
     border-radius: 5%;
     object-fit: contain;
     aspect-ratio: 3/4;
 }
-h3{
+#heading{
     margin-left: 60px;
 }
 .main{
