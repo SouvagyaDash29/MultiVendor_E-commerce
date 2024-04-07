@@ -11,4 +11,3 @@ public interface SubCategoryService {
     SubCategoryDto getById(Long subCategoryId);
     List<SubCategoryDto> getAll();
 }
-
