@@ -40,7 +40,7 @@ public class SubCategoryServiceImpl implements SubCategoryService {
 
         existingSubCategory.setTitle(subCategoryDto.getTitle());
 
-        // Check if the nested CategoryDto object is not null
+       
         if (subCategoryDto.getCategory() != null) {
             Category category = modelMapper.map(subCategoryDto.getCategory(), Category.class);
             existingSubCategory.setCategory(category);
