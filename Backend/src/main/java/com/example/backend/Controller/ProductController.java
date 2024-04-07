@@ -45,4 +45,11 @@ public class ProductController {
         List<ProductDto> productDtoList = productService.getAll();
         return ResponseEntity.ok(productDtoList);
     }
+
+    // Find product by subCategory
+    @GetMapping("/subcategory/{subcategoryId}")
+    public ResponseEntity<List<ProductDto>>getProductByCategory(@PathVariable Long subcategoryId){
+        List<ProductDto> findProductByCategory = this.productService.findProductBySubCategory(subcategoryId);
+        return new ResponseEntity<List<ProductDto>>(findProductByCategory,HttpStatus.ACCEPTED);
+    }
 }
