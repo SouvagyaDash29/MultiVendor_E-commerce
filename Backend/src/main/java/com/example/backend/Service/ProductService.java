@@ -10,4 +10,6 @@ public interface ProductService {
     void delete(Long productId);
     ProductDto getById(Long productId);
     List<ProductDto> getAll();
+    List<ProductDto> findProductBySubCategory(Long subcategoryId);
+
 }
