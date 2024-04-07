@@ -38,12 +38,20 @@ public class SubCategoryServiceImpl implements SubCategoryService {
         SubCategory existingSubCategory = subCategoryRepository.findById(subCategoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("SubCategory not found with id: " + subCategoryId));
 
-        // Update the fields
         existingSubCategory.setTitle(subCategoryDto.getTitle());
 
+       
+        if (subCategoryDto.getCategory() != null) {
+            Category category = modelMapper.map(subCategoryDto.getCategory(), Category.class);
+            existingSubCategory.setCategory(category);
+        }
+
         SubCategory updatedSubCategory = subCategoryRepository.save(existingSubCategory);
+
         return modelMapper.map(updatedSubCategory, SubCategoryDto.class);
     }
+
+
 
     @Override
     public void delete(Long subCategoryId) {
@@ -69,19 +77,19 @@ public class SubCategoryServiceImpl implements SubCategoryService {
 
     @Override
     public SubCategoryDto associateWithCategory(Long subCategoryId, Long categoryId) {
-        // Retrieve the SubCategory and Category entities
+
         SubCategory subCategory = subCategoryRepository.findById(subCategoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("SubCategory not found with id: " + subCategoryId));
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + categoryId));
 
-        // Associate the SubCategory with the Category
+
         subCategory.setCategory(category);
 
-        // Save the updated SubCategory entity
+
         SubCategory updatedSubCategory = subCategoryRepository.save(subCategory);
 
-        // Map the updated SubCategory entity to SubCategoryDto and return it
+
         return modelMapper.map(updatedSubCategory, SubCategoryDto.class);
     }
 }
