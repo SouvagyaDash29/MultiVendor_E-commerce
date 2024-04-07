@@ -45,4 +45,10 @@ public class SubCategoryController {
         List<SubCategoryDto> subCategoryDtoList = subCategoryService.getAll();
         return ResponseEntity.ok(subCategoryDtoList);
     }
+
+    @PostMapping("/{subCategoryId}/associate/{categoryId}")
+    public ResponseEntity<SubCategoryDto> associateSubCategoryWithCategory(@PathVariable Long subCategoryId, @PathVariable Long categoryId) {
+        SubCategoryDto updatedSubCategory = subCategoryService.associateWithCategory(subCategoryId, categoryId);
+        return ResponseEntity.ok(updatedSubCategory);
+    }
 }

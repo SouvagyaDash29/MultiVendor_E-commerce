@@ -1,8 +1,10 @@
 package com.example.backend.Service.Impl;
 
 import com.example.backend.Exception.ResourceNotFoundException;
+import com.example.backend.Model.Category;
 import com.example.backend.Model.SubCategory;
 import com.example.backend.Payload.SubCategoryDto;
+import com.example.backend.Repositary.CategoryRepository;
 import com.example.backend.Repositary.SubCategoryRepository;
 import com.example.backend.Service.SubCategoryService;
 import org.modelmapper.ModelMapper;
@@ -17,6 +19,9 @@ public class SubCategoryServiceImpl implements SubCategoryService {
 
     @Autowired
     private SubCategoryRepository subCategoryRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -60,5 +65,23 @@ public class SubCategoryServiceImpl implements SubCategoryService {
         return subCategories.stream()
                 .map(subCategory -> modelMapper.map(subCategory, SubCategoryDto.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public SubCategoryDto associateWithCategory(Long subCategoryId, Long categoryId) {
+        // Retrieve the SubCategory and Category entities
+        SubCategory subCategory = subCategoryRepository.findById(subCategoryId)
+                .orElseThrow(() -> new ResourceNotFoundException("SubCategory not found with id: " + subCategoryId));
+        Category category = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + categoryId));
+
+        // Associate the SubCategory with the Category
+        subCategory.setCategory(category);
+
+        // Save the updated SubCategory entity
+        SubCategory updatedSubCategory = subCategoryRepository.save(subCategory);
+
+        // Map the updated SubCategory entity to SubCategoryDto and return it
+        return modelMapper.map(updatedSubCategory, SubCategoryDto.class);
     }
 }
