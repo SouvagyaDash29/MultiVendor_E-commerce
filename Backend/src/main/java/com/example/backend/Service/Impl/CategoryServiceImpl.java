@@ -1,6 +1,6 @@
 package com.example.backend.Service.Impl;
 
-import com.example.backend.Exception.ResourseNotFoundException;
+import com.example.backend.Exception.ResourceNotFoundException;
 import com.example.backend.Model.Category;
 import com.example.backend.Payload.CategoryDto;
 import com.example.backend.Repositary.CategoryRepository;
@@ -27,10 +27,11 @@ public class CategoryServiceImpl implements CategoryService {
         Category savedCategory = categoryRepository.save(category);
         return modelMapper.map(savedCategory, CategoryDto.class);
     }
+
     @Override
     public CategoryDto update(Long categoryId, CategoryDto categoryDto) {
         Category existingCategory = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new ResourseNotFoundException("Category not found with id: " + categoryId));
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + categoryId));
 
         // Update the fields
         existingCategory.setTitle(categoryDto.getTitle());
@@ -42,14 +43,14 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void delete(Long categoryId) {
         Category category = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new ResourseNotFoundException("Category not found with id: " + categoryId));
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + categoryId));
         categoryRepository.delete(category);
     }
 
     @Override
     public CategoryDto getById(Long categoryId) {
         Category category = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new ResourseNotFoundException("Category not found with id: " + categoryId));
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + categoryId));
         return modelMapper.map(category, CategoryDto.class);
     }
 

@@ -1,7 +1,6 @@
 package com.example.backend.Service.Impl;
 
-
-import com.example.backend.Exception.ResourseNotFoundException;
+import com.example.backend.Exception.ResourceNotFoundException;
 import com.example.backend.Model.SubCategory;
 import com.example.backend.Payload.SubCategoryDto;
 import com.example.backend.Repositary.SubCategoryRepository;
@@ -28,10 +27,11 @@ public class SubCategoryServiceImpl implements SubCategoryService {
         SubCategory savedSubCategory = subCategoryRepository.save(subCategory);
         return modelMapper.map(savedSubCategory, SubCategoryDto.class);
     }
+
     @Override
     public SubCategoryDto update(Long subCategoryId, SubCategoryDto subCategoryDto) {
         SubCategory existingSubCategory = subCategoryRepository.findById(subCategoryId)
-                .orElseThrow(() -> new ResourseNotFoundException("SubCategory not found with id: " + subCategoryId));
+                .orElseThrow(() -> new ResourceNotFoundException("SubCategory not found with id: " + subCategoryId));
 
         // Update the fields
         existingSubCategory.setTitle(subCategoryDto.getTitle());
@@ -43,14 +43,14 @@ public class SubCategoryServiceImpl implements SubCategoryService {
     @Override
     public void delete(Long subCategoryId) {
         SubCategory subCategory = subCategoryRepository.findById(subCategoryId)
-                .orElseThrow(() -> new ResourseNotFoundException("SubCategory not found with id: " + subCategoryId));
+                .orElseThrow(() -> new ResourceNotFoundException("SubCategory not found with id: " + subCategoryId));
         subCategoryRepository.delete(subCategory);
     }
 
     @Override
     public SubCategoryDto getById(Long subCategoryId) {
         SubCategory subCategory = subCategoryRepository.findById(subCategoryId)
-                .orElseThrow(() -> new ResourseNotFoundException("SubCategory not found with id: " + subCategoryId));
+                .orElseThrow(() -> new ResourceNotFoundException("SubCategory not found with id: " + subCategoryId));
         return modelMapper.map(subCategory, SubCategoryDto.class);
     }
 

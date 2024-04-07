@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(ResourseNotFoundException.class)
-    public String HandelResourseNotFoundException(ResourseNotFoundException ex){
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public String HandelResourseNotFoundException(ResourceNotFoundException ex){
 
         return ex.getMessage();
     }
