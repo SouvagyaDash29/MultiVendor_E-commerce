@@ -14,6 +14,10 @@ public class SubCategory {
     private Long subcategoryId;
     private String title;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     @OneToMany(mappedBy = "subCategory", cascade = CascadeType.ALL)
     private List<Product> products;
 }

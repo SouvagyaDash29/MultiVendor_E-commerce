@@ -10,4 +10,5 @@ public interface SubCategoryService {
     void delete(Long subCategoryId);
     SubCategoryDto getById(Long subCategoryId);
     List<SubCategoryDto> getAll();
+    SubCategoryDto associateWithCategory(Long subCategoryId, Long categoryId);
 }

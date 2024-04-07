@@ -13,5 +13,6 @@ public class SubCategoryDto {
     private Long subcategoryId;
     private String title;
 
+    private Long categoryId;
 
 }
