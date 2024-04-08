@@ -42,6 +42,13 @@
 
 .card-text{
     color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+}
+.card-text svg{
+   font-size: 30px;
 }
 
 .card-1{
