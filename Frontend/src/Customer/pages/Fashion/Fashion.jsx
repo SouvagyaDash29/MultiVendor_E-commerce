@@ -7,7 +7,12 @@ import products from "../../DB/data";
 import Card from "../../components/Sidebar/SidebarComponets/Card/Card";
 
 
-const Fashion = () => {
+const Fashion = ({cart, setCart}) => {
+
+
+
+
+
   const [selectCategory, setSelectCategory] = useState(null);
 
   //---------Input Filter--------
@@ -63,6 +68,8 @@ const Fashion = () => {
           reviews={reviews}
           newPrice={newPrice}
           prevPrice={prevPrice}
+          cart={cart}
+          setCart={setCart}
         />
       )
     );
