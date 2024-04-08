@@ -8,6 +8,7 @@ import {
 import Buyer from "./Customer/Buyer";
 import Vender from './VENDOR/Vendor' ;
 import Test from './auth/Test';
+import LoginPage from './auth/pages/Login/LoginPage';
 // import LoginPage from './auth/pages/Login/LoginPage';
 // import Login from "./auth/pages/login/Login";
 // import Footer from "./Customer/components/Footer/Footer";
@@ -23,7 +24,7 @@ function App() {
       {/* <Vender /> */}
       {/* <Test /> */}
 
-
+    {/* <LoginPage/> */}
     {/* </Router> */}
   </>
   );

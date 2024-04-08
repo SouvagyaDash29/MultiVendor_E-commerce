@@ -2,8 +2,8 @@ import React from "react";
 // import { AiFillStar } from "react-icons/ai";
 import Cart from "../../../../../assets/svg/Group 1269.svg";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 const Card = ({ id, img, title, star, reviews, newPrice, prevPrice,cart,setCart }) => {
 
