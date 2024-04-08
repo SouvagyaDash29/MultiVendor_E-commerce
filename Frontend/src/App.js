@@ -17,6 +17,7 @@ import Test from './auth/Test';
 function App() {
   return (
 <>
+
     {/* <Router> */}
       <Buyer />
       {/* <Vender /> */}
@@ -29,3 +30,4 @@ function App() {
 }
 
 export default App;
+

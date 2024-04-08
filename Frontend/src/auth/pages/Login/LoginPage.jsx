@@ -7,14 +7,14 @@ const LoginPage = () => {
   return <div>
      <div class="parent">
         <div class="child1">
-            <img src={loginphoto} alt="" height="500px " width="500px" class="rounded-lg"/>
+            <img id="limg" src={loginphoto} alt="" height="500px " width="500px" class="rounded-lg"/>
         </div>
         <div style={{marginLeft:'20px'}} >
-           <h3 class="mt-5 me-4" >Please Login here!!!!!!</h3>
+           <h3 class="mt-5 me-4" id="heading">Please Login here!!!!!!</h3>
            <div class="card-body me-3" >
-            <label for="" class="mb-2 mt-2">Name</label>
+            <label for="" class="mb-2 mt-2">Name here</label>
             <input type="text" class="form-control"/>
-            <label for="" class="mb-2 mt-2">Email</label>
+            <label for="" class="mb-2 mt-2">Email here</label>
             <input type="email" class="form-control"/>
             <label for="" class="mb-2 mt-2">Password</label>
             <input type="password" class="form-control"/>
