@@ -16,24 +16,27 @@ import Shoes from "./pages/Shoes/Shoes";
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import SearchItem from "./components/SearchItem/SearchItem";
 import item from "./DB/data"
+import Cart from "./components/cart/Cart";
 
 
 
 const Buyer = () => {
+  const [cart, setCart] = useState([])
   return (
      <body >
          <Router>
-        <Header />
+        <Header cart={cart}/>
          <Navbar />
          <Routes>
           <Route path="/" index element={<Home />}/>
-          <Route path="/Fashion" element={<Fashion />}/>
+          <Route path="/Fashion" element={<Fashion cart={cart} setCart={setCart}/>}/>
           <Route path="/Electronics"  element={<Electronics />}/>
           <Route path="/Watch" element={<Watch />}/>
           <Route path="/Shoes" element={<Shoes />}/>
           <Route path="/Home Applience" element={<Applience />}/>
           <Route path="/Product/:id" element={<ProductDetails />} />
           <Route path="/Search/:term" element={<SearchItem />} />
+          <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/>} />
          </Routes>
       </Router>
      </body>

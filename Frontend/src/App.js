@@ -17,18 +17,15 @@ import Test from './auth/Test';
 function App() {
   return (
 <>
-    <Router>
-      {/* <Buyer /> */}
+    {/* <Router> */}
+      <Buyer />
       {/* <Vender /> */}
-      <Test />
+      {/* <Test /> */}
 
 
-    </Router>
-    </>
+    {/* </Router> */}
+  </>
   );
 }
 
 export default App;
-{/* <Vendor/> */ }
-{/* <Buyer /> */ }
-{/* <LoginPage/> */ }
