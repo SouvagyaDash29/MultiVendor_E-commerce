@@ -19,13 +19,13 @@ function App() {
   return (
 <>
 
-    {/* <Router> */}
-      <Buyer />
+    <Router>
+      {/* <Buyer /> */}
       {/* <Vender /> */}
-      {/* <Test /> */}
+      <Test />
 
     {/* <LoginPage/> */}
-    {/* </Router> */}
+    </Router>
   </>
   );
 }
