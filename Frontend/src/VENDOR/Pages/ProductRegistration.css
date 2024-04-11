@@ -13,8 +13,7 @@
 
 }
 .input-fields {
-    /* Apply Bootstrap form-control class for basic input styling */
-    /* Adjust additional styles as needed */
+    
     display: inline-block;
     width: 50%;
     padding: .375rem .75rem;
@@ -46,8 +45,7 @@ position: relative;
 }
 
 .submit-button {
-    /* Apply Bootstrap btn and btn-success classes */
-    /* Add custom margin and left spacing */
+  
     margin: 3px 0 0 10px;
     background-color: green;
     color: white;
@@ -65,8 +63,7 @@ position: relative;
   
   
   .reset-button {
-    /* Apply Bootstrap btn and btn-danger classes */
-    /* Add custom margin and left spacing */
+  
     margin: 3px 0 0 10px;
     background-color: red;
     color: white;
