@@ -18,13 +18,14 @@ import LoginPage from './auth/pages/Login/LoginPage';
 function App() {
   return (
 <>
-    {/* <Router> */}
-      <Buyer />
+
+    <Router>
+      {/* <Buyer /> */}
       {/* <Vender /> */}
-      {/* <Test /> */}
+      <Test />
 
     {/* <LoginPage/> */}
-    {/* </Router> */}
+    </Router>
   </>
   );
 }

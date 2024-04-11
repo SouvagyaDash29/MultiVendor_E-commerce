@@ -36,7 +36,7 @@ const Buyer = () => {
           <Route path="/Product/:id" element={<ProductDetails />} />
           <Route path="/Search/:term" element={<SearchItem />} />
           <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/>} />
-          <Route path="/login" element={<LoginPage/>}/>
+          {/* <Route path="/login" element={<LoginPage/>}/> */}
          </Routes>
       </Router>
      </body>
