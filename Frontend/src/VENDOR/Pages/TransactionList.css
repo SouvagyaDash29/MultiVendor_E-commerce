@@ -1,14 +1,58 @@
+/* TransactionList.css */
+
+/* Container styles */
 .transaction-list {
-    margin: 20px;
-  position: absolute;
-  top: 220px;
-  left: 39px;
+  margin: 40px auto;
+  max-width: 800px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow: auto;
+}
+
+/* Heading styles */
+.transaction-list h2 {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  color: #343a40;
+  margin-bottom: 20px;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+thead {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+th {
+  font-weight: bold;
+}
+
+tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
+td {
+  color: #495057;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  table, th, td {
+      font-size: 0.9em;
   }
-  
-  .transaction-item {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
+}
