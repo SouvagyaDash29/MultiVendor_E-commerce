@@ -8,6 +8,7 @@ import {
 import Buyer from "./Customer/Buyer";
 import Vendor from './VENDOR/Vendor' ;
 import Test from './auth/Test';
+import LoginPage from './auth/pages/Login/LoginPage';
 // import LoginPage from './auth/pages/Login/LoginPage';
 // import Login from "./auth/pages/login/Login";
 // import Footer from "./Customer/components/Footer/Footer";
@@ -17,12 +18,17 @@ import Test from './auth/Test';
 function App() {
   return (
 <>
-    <Router>
-      {/* <Buyer /> */}
-      <Vendor />
+    {/* <Router> */}
+      <Buyer />
+      {/* <Vender /> */}
       {/* <Test /> */}
-    </Router> 
-    </>
+
+    {/* <LoginPage/> */}
+    {/* </Router> */}
+  </>
   );
 }
+
 export default App;
+
+

@@ -14,8 +14,9 @@
     position: absolute;
     top: 140px;
     left: 20%;
+    margin-top: 100px;
 }
-img{
+#limg{
     border-radius: 5%;
 }
 #heading{

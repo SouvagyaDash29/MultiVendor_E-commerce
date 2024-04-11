@@ -7,7 +7,7 @@ import { RiShoppingCartLine } from "react-icons/ri";
 import { BiUser } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({cart}) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const navigate = useNavigate();
@@ -38,7 +38,8 @@ const Header = () => {
 
         <div className="icon-section">
           <HiOutlineHeart />
-          <RiShoppingCartLine />
+         <Link to='/cart'> <RiShoppingCartLine />
+         <span>{cart.length}</span></Link>
           <BiUser />
         </div>
       </div>
