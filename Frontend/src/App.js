@@ -6,7 +6,7 @@ import {
   // NavLink,
 } from "react-router-dom";
 import Buyer from "./Customer/Buyer";
-import Vender from './VENDOR/Vendor' ;
+import Vendor from './VENDOR/Vendor' ;
 import Test from './auth/Test';
 import LoginPage from './auth/pages/Login/LoginPage';
 // import LoginPage from './auth/pages/Login/LoginPage';
@@ -31,4 +31,5 @@ function App() {
 }
 
 export default App;
+
 
