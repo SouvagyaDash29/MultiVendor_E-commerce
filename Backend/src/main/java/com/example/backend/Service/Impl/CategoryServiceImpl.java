@@ -34,7 +34,7 @@ public class CategoryServiceImpl implements CategoryService {
                 .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + categoryId));
 
         // Update the fields
-        existingCategory.setTitle(categoryDto.getTitle());
+        existingCategory.setCategoryName(categoryDto.getCategoryName());
 
         Category updatedCategory = categoryRepository.save(existingCategory);
         return modelMapper.map(updatedCategory, CategoryDto.class);
