@@ -13,7 +13,9 @@ public class ProductDto {
     private Integer price;
     private String brand;
     private String color;
-
-    private SubCategoryDto subCategory;
+    private Long subcategoryId;
+    private String subcategoryName;
+    private Long categoryId;
+    private String categoryName;
 
 }

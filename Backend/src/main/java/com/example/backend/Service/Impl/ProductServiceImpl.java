@@ -29,10 +29,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDto create(ProductDto productDto) {
         Product product = modelMapper.map(productDto, Product.class);
-        if (productDto.getSubCategory() != null) {
-            SubCategory subCategory = modelMapper.map(productDto.getSubCategory(), SubCategory.class);
-            product.setSubCategory(subCategory);
-        }
+        SubCategory subCategory = subCategoryRepository.findById(productDto.getSubcategoryId())
+                .orElseThrow(() -> new ResourceNotFoundException("SubCategory not found with id: " + productDto.getSubcategoryId()));
+        product.setSubCategory(subCategory);
         Product savedProduct = productRepository.save(product);
         return modelMapper.map(savedProduct, ProductDto.class);
     }
@@ -46,8 +45,8 @@ public class ProductServiceImpl implements ProductService {
         existingProduct.setPrice(productDto.getPrice());
         existingProduct.setBrand(productDto.getBrand());
         existingProduct.setColor(productDto.getColor());
-        if (productDto.getSubCategory() != null) {
-            existingProduct.setSubCategory(modelMapper.map(productDto.getSubCategory(), SubCategory.class));
+        if (productDto.getSubcategoryId() != null) {
+            existingProduct.setSubCategory(modelMapper.map(productDto.getSubcategoryId(), SubCategory.class));
         }
         Product updatedProduct = productRepository.save(existingProduct);
         return modelMapper.map(updatedProduct, ProductDto.class);
@@ -64,14 +63,24 @@ public class ProductServiceImpl implements ProductService {
     public ProductDto getById(Long productId) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + productId));
-        return modelMapper.map(product, ProductDto.class);
+        ProductDto productDto = modelMapper.map(product, ProductDto.class);
+        productDto.setSubcategoryName(product.getSubCategory().getSubcategoryName());
+        productDto.setCategoryId(product.getSubCategory().getCategory().getCategoryId());
+        productDto.setCategoryName(product.getSubCategory().getCategory().getCategoryName());
+        return productDto;
     }
 
     @Override
     public List<ProductDto> getAll() {
         List<Product> products = productRepository.findAll();
         return products.stream()
-                .map(product -> modelMapper.map(product, ProductDto.class))
+                .map(product -> {
+                    ProductDto productDto = modelMapper.map(product, ProductDto.class);
+                    productDto.setSubcategoryName(product.getSubCategory().getSubcategoryName());
+                    productDto.setCategoryId(product.getSubCategory().getCategory().getCategoryId());
+                    productDto.setCategoryName(product.getSubCategory().getCategory().getCategoryName());
+                    return productDto;
+                })
                 .collect(Collectors.toList());
     }
 
@@ -85,5 +94,13 @@ public class ProductServiceImpl implements ProductService {
                 .map(product -> modelMapper.map(product, ProductDto.class))
                 .collect(Collectors.toList());
         return productDtos;
+    }
+
+    @Override
+    public List<ProductDto> findProductByCategory(Long categoryId) {
+        List<Product> products = productRepository.findBySubCategory_Category_CategoryId(categoryId);
+        return products.stream()
+                .map(product -> modelMapper.map(product, ProductDto.class))
+                .collect(Collectors.toList());
     }
 }
