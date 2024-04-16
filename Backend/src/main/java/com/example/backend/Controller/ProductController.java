@@ -58,6 +58,7 @@ public class ProductController {
         return ResponseEntity.ok(products);
     }
 
+    // seeing product related to category (Fashion,Electronics,etc)
     @GetMapping("/byCategory/{categoryId}")
     public ResponseEntity<List<ProductDto>> getProductsByCategory(@PathVariable Long categoryId) {
         List<ProductDto> products = productService.findProductByCategory(categoryId);

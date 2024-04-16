@@ -40,17 +40,22 @@ public class ProductServiceImpl implements ProductService {
     public ProductDto update(Long productId, ProductDto productDto) {
         Product existingProduct = productRepository.findById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + productId));
+
         existingProduct.setProductName(productDto.getProductName());
         existingProduct.setProductDescription(productDto.getProductDescription());
         existingProduct.setPrice(productDto.getPrice());
         existingProduct.setBrand(productDto.getBrand());
         existingProduct.setColor(productDto.getColor());
+
         if (productDto.getSubcategoryId() != null) {
-            existingProduct.setSubCategory(modelMapper.map(productDto.getSubcategoryId(), SubCategory.class));
+            SubCategory subCategory = subCategoryRepository.findById(productDto.getSubcategoryId())
+                    .orElseThrow(() -> new ResourceNotFoundException("SubCategory not found with id: " + productDto.getSubcategoryId()));
+            existingProduct.setSubCategory(subCategory);
         }
         Product updatedProduct = productRepository.save(existingProduct);
         return modelMapper.map(updatedProduct, ProductDto.class);
     }
+
 
     @Override
     public void delete(Long productId) {
@@ -63,12 +68,18 @@ public class ProductServiceImpl implements ProductService {
     public ProductDto getById(Long productId) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + productId));
+
         ProductDto productDto = modelMapper.map(product, ProductDto.class);
-        productDto.setSubcategoryName(product.getSubCategory().getSubcategoryName());
-        productDto.setCategoryId(product.getSubCategory().getCategory().getCategoryId());
-        productDto.setCategoryName(product.getSubCategory().getCategory().getCategoryName());
+
+        if (product.getSubCategory() != null) {
+            productDto.setSubcategoryName(product.getSubCategory().getSubcategoryName());
+            productDto.setCategoryId(product.getSubCategory().getCategory().getCategoryId());
+            productDto.setCategoryName(product.getSubCategory().getCategory().getCategoryName());
+        }
+
         return productDto;
     }
+
 
     @Override
     public List<ProductDto> getAll() {
@@ -76,13 +87,16 @@ public class ProductServiceImpl implements ProductService {
         return products.stream()
                 .map(product -> {
                     ProductDto productDto = modelMapper.map(product, ProductDto.class);
-                    productDto.setSubcategoryName(product.getSubCategory().getSubcategoryName());
-                    productDto.setCategoryId(product.getSubCategory().getCategory().getCategoryId());
-                    productDto.setCategoryName(product.getSubCategory().getCategory().getCategoryName());
+                    if (product.getSubCategory() != null) {
+                        productDto.setSubcategoryName(product.getSubCategory().getSubcategoryName());
+                        productDto.setCategoryId(product.getSubCategory().getCategory().getCategoryId());
+                        productDto.setCategoryName(product.getSubCategory().getCategory().getCategoryName());
+                    }
                     return productDto;
                 })
                 .collect(Collectors.toList());
     }
+
 
     //find product by subcategory
     @Override
