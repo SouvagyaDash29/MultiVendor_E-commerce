@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -18,7 +20,29 @@ public class ProductController {
 
     // create product url
     @PostMapping("/create")
-    public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto) {
+    public ResponseEntity<ProductDto> createProduct(
+            @RequestParam("productName") String productName,
+            @RequestParam("productDescription") String productDescription,
+            @RequestParam("price") int price,
+            @RequestParam("brand") String brand,
+            @RequestParam("color") String color,
+            @RequestParam("subcategoryId") Long subcategoryId,
+            @RequestParam("file") MultipartFile file
+    ) {
+        // Check if the file is empty or null
+        if (file == null || file.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+
+        ProductDto productDto = new ProductDto();
+        productDto.setProductName(productName);
+        productDto.setProductDescription(productDescription);
+        productDto.setPrice(price);
+        productDto.setBrand(brand);
+        productDto.setColor(color);
+        productDto.setSubcategoryId(subcategoryId);
+        productDto.setFileData(file);
+
         ProductDto createdProduct = productService.create(productDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
     }
