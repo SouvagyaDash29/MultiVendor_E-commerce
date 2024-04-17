@@ -119,25 +119,33 @@ public class ProductServiceImpl implements ProductService {
                 })
                 .collect(Collectors.toList());
     }
-
-
-    //find product by subcategory
+    
     @Override
     public List<ProductDto> findProductBySubCategory(Long subcategoryId) {
         SubCategory subCategory = subCategoryRepository.findById(subcategoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("SubCategory not found with id: " + subcategoryId));
         List<Product> products = productRepository.findBySubCategory(subCategory);
         List<ProductDto> productDtos = products.stream()
-                .map(product -> modelMapper.map(product, ProductDto.class))
+                .map(product -> {
+                    ProductDto productDto = modelMapper.map(product, ProductDto.class);
+                    productDto.setCategoryName(product.getSubCategory().getCategory().getCategoryName());
+                    return productDto;
+                })
                 .collect(Collectors.toList());
         return productDtos;
     }
 
+
     @Override
     public List<ProductDto> findProductByCategory(Long categoryId) {
         List<Product> products = productRepository.findBySubCategory_Category_CategoryId(categoryId);
-        return products.stream()
-                .map(product -> modelMapper.map(product, ProductDto.class))
+        List<ProductDto> productDtos = products.stream().map(product -> {
+                    ProductDto productDto = modelMapper.map(product, ProductDto.class);
+                    // Set the categoryName to the correct category name
+                    productDto.setCategoryName(product.getSubCategory().getCategory().getCategoryName());
+                    return productDto;
+                })
                 .collect(Collectors.toList());
+        return productDtos;
     }
 }
