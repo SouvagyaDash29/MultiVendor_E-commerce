@@ -10,7 +10,10 @@ import com.example.backend.Service.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,6 +35,18 @@ public class ProductServiceImpl implements ProductService {
         SubCategory subCategory = subCategoryRepository.findById(productDto.getSubcategoryId())
                 .orElseThrow(() -> new ResourceNotFoundException("SubCategory not found with id: " + productDto.getSubcategoryId()));
         product.setSubCategory(subCategory);
+
+        MultipartFile fileData = productDto.getFileData();
+        if (fileData != null && !fileData.isEmpty()) {
+            try {
+                byte[] imageData = fileData.getBytes();
+                String encodedImage = Base64.getEncoder().encodeToString(imageData);
+                product.setProductImage(encodedImage.getBytes());
+            } catch (IOException e) {
+                throw new RuntimeException("Failed to save product image", e);
+            }
+        }
+
         Product savedProduct = productRepository.save(product);
         return modelMapper.map(savedProduct, ProductDto.class);
     }
@@ -52,6 +67,13 @@ public class ProductServiceImpl implements ProductService {
                     .orElseThrow(() -> new ResourceNotFoundException("SubCategory not found with id: " + productDto.getSubcategoryId()));
             existingProduct.setSubCategory(subCategory);
         }
+        if (productDto.getFileData() != null) {
+            try {
+                existingProduct.setProductImage(productDto.getFileData().getBytes());
+            } catch (IOException e) {
+                throw new RuntimeException("Failed to update product image", e);
+            }
+        }
         Product updatedProduct = productRepository.save(existingProduct);
         return modelMapper.map(updatedProduct, ProductDto.class);
     }
@@ -70,6 +92,7 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + productId));
 
         ProductDto productDto = modelMapper.map(product, ProductDto.class);
+        productDto.setProductImage(product.getProductImage());
 
         if (product.getSubCategory() != null) {
             productDto.setSubcategoryName(product.getSubCategory().getSubcategoryName());
@@ -96,25 +119,33 @@ public class ProductServiceImpl implements ProductService {
                 })
                 .collect(Collectors.toList());
     }
-
-
-    //find product by subcategory
+    
     @Override
     public List<ProductDto> findProductBySubCategory(Long subcategoryId) {
         SubCategory subCategory = subCategoryRepository.findById(subcategoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("SubCategory not found with id: " + subcategoryId));
         List<Product> products = productRepository.findBySubCategory(subCategory);
         List<ProductDto> productDtos = products.stream()
-                .map(product -> modelMapper.map(product, ProductDto.class))
+                .map(product -> {
+                    ProductDto productDto = modelMapper.map(product, ProductDto.class);
+                    productDto.setCategoryName(product.getSubCategory().getCategory().getCategoryName());
+                    return productDto;
+                })
                 .collect(Collectors.toList());
         return productDtos;
     }
 
+
     @Override
     public List<ProductDto> findProductByCategory(Long categoryId) {
         List<Product> products = productRepository.findBySubCategory_Category_CategoryId(categoryId);
-        return products.stream()
-                .map(product -> modelMapper.map(product, ProductDto.class))
+        List<ProductDto> productDtos = products.stream().map(product -> {
+                    ProductDto productDto = modelMapper.map(product, ProductDto.class);
+                    // Set the categoryName to the correct category name
+                    productDto.setCategoryName(product.getSubCategory().getCategory().getCategoryName());
+                    return productDto;
+                })
                 .collect(Collectors.toList());
+        return productDtos;
     }
 }
