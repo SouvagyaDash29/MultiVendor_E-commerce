@@ -119,7 +119,7 @@ public class ProductServiceImpl implements ProductService {
                 })
                 .collect(Collectors.toList());
     }
-    
+
     @Override
     public List<ProductDto> findProductBySubCategory(Long subcategoryId) {
         SubCategory subCategory = subCategoryRepository.findById(subcategoryId)
@@ -141,7 +141,6 @@ public class ProductServiceImpl implements ProductService {
         List<Product> products = productRepository.findBySubCategory_Category_CategoryId(categoryId);
         List<ProductDto> productDtos = products.stream().map(product -> {
                     ProductDto productDto = modelMapper.map(product, ProductDto.class);
-                    // Set the categoryName to the correct category name
                     productDto.setCategoryName(product.getSubCategory().getCategory().getCategoryName());
                     return productDto;
                 })
