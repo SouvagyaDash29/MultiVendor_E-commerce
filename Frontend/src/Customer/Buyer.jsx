@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  // NavLink,
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
@@ -21,11 +16,12 @@ import LoginPage from "../auth/pages/Login/LoginPage";
 
 
 
+
 const Buyer = () => {
   const [cart, setCart] = useState([])
   return (
+
      <body >
-         <Router>
         <Header cart={cart}/>
          <Navbar />
          <Routes>
@@ -38,12 +34,12 @@ const Buyer = () => {
           <Route path="/Product/:id" element={<ProductDetails />} />
           <Route path="/Search/:term" element={<SearchItem />} />
           <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/>} />
-          <Route path="/login" element={<LoginPage/>}/>
+          {/* <Route path="/login" element={<LoginPage/>}/> */}
          </Routes>
-      </Router>
      </body>
      
    
+
   );
 };
 

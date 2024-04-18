@@ -11,8 +11,8 @@ import java.util.List;
 @Data
 public class SubCategoryDto {
     private Long subcategoryId;
-    private String title;
-
-    private CategoryDto category;
+    private String subcategoryName;
+    private Long categoryId;
+    private String categoryName;
 
 }
