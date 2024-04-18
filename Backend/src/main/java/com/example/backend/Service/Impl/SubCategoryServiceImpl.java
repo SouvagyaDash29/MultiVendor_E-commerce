@@ -29,7 +29,14 @@ public class SubCategoryServiceImpl implements SubCategoryService {
     @Override
     public SubCategoryDto create(SubCategoryDto subCategoryDto) {
         SubCategory subCategory = modelMapper.map(subCategoryDto, SubCategory.class);
+        // Retrieve the category entity using categoryId
+        Category category = categoryRepository.findById(subCategoryDto.getCategoryId())
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + subCategoryDto.getCategoryId()));
+        // Set the category for the subcategory
+        subCategory.setCategory(category);
+        // Save the subcategory
         SubCategory savedSubCategory = subCategoryRepository.save(subCategory);
+        // Map and return the saved subcategory DTO
         return modelMapper.map(savedSubCategory, SubCategoryDto.class);
     }
 
@@ -38,20 +45,18 @@ public class SubCategoryServiceImpl implements SubCategoryService {
         SubCategory existingSubCategory = subCategoryRepository.findById(subCategoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("SubCategory not found with id: " + subCategoryId));
 
-        existingSubCategory.setTitle(subCategoryDto.getTitle());
+        existingSubCategory.setSubcategoryName(subCategoryDto.getSubcategoryName());
 
-       
-        if (subCategoryDto.getCategory() != null) {
-            Category category = modelMapper.map(subCategoryDto.getCategory(), Category.class);
-            existingSubCategory.setCategory(category);
-        }
+        // Retrieve the category entity using categoryId
+        Category category = categoryRepository.findById(subCategoryDto.getCategoryId())
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + subCategoryDto.getCategoryId()));
+        // Set the category for the subcategory
+        existingSubCategory.setCategory(category);
 
         SubCategory updatedSubCategory = subCategoryRepository.save(existingSubCategory);
 
         return modelMapper.map(updatedSubCategory, SubCategoryDto.class);
     }
-
-
 
     @Override
     public void delete(Long subCategoryId) {
@@ -64,15 +69,30 @@ public class SubCategoryServiceImpl implements SubCategoryService {
     public SubCategoryDto getById(Long subCategoryId) {
         SubCategory subCategory = subCategoryRepository.findById(subCategoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("SubCategory not found with id: " + subCategoryId));
-        return modelMapper.map(subCategory, SubCategoryDto.class);
+
+        // Map SubCategory to SubCategoryDto
+        SubCategoryDto subCategoryDto = modelMapper.map(subCategory, SubCategoryDto.class);
+
+        // Set category name in the DTO
+        subCategoryDto.setCategoryName(subCategory.getCategory().getCategoryName());
+
+        return subCategoryDto;
     }
 
     @Override
     public List<SubCategoryDto> getAll() {
         List<SubCategory> subCategories = subCategoryRepository.findAll();
-        return subCategories.stream()
-                .map(subCategory -> modelMapper.map(subCategory, SubCategoryDto.class))
+
+        // Map each SubCategory to SubCategoryDto and set category name in the DTO
+        List<SubCategoryDto> subCategoryDtoList = subCategories.stream()
+                .map(subCategory -> {
+                    SubCategoryDto subCategoryDto = modelMapper.map(subCategory, SubCategoryDto.class);
+                    subCategoryDto.setCategoryName(subCategory.getCategory().getCategoryName());
+                    return subCategoryDto;
+                })
                 .collect(Collectors.toList());
+
+        return subCategoryDtoList;
     }
 
     @Override
@@ -83,9 +103,7 @@ public class SubCategoryServiceImpl implements SubCategoryService {
         Category category = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + categoryId));
 
-
         subCategory.setCategory(category);
-
 
         SubCategory updatedSubCategory = subCategoryRepository.save(subCategory);
 

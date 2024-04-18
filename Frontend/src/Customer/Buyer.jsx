@@ -1,10 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  // NavLink,
-} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
@@ -15,7 +10,7 @@ import Applience from "./pages/Applience/Applience";
 import Shoes from "./pages/Shoes/Shoes";
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import SearchItem from "./components/SearchItem/SearchItem";
-import item from "./DB/data";
+import item from "./DB/data"
 import Cart from "./components/cart/Cart";
 import LoginPage from "../auth/pages/Login/LoginPage";
 import axios from "axios";
@@ -49,7 +44,6 @@ const Buyer = () => {
      
 
      <body >
-         {/* <Router> */}
         <Header cart={cart}/>
          <Navbar />
          <Routes >
@@ -64,7 +58,6 @@ const Buyer = () => {
           <Route path="/cart" element={<Cart cart={cart} setCart={setCart}/>} />
           {/* <Route path="/login" element={<LoginPage/>}/> */}
          </Routes>
-      {/* </Router> */}
      </body>
      
    

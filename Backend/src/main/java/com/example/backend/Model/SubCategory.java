@@ -12,7 +12,7 @@ public class SubCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long subcategoryId;
-    private String title;
+    private String subcategoryName;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
