@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import './Login.css'
 import loginphoto from './login.svg'
 import Signuppage from "../Signup/Signuppage";
-import { Link,useNavigate } from "react-router-dom";
+import { Link,useNavigate  } from "react-router-dom";
 
 const LoginPage = () => {
-    const navigate = useNavigate()
-    const[role,setrole]=useState('');
-    const handlechange = (event) =>{
-        event.preventDefault();
-        alert(role)
-        if(role==="customer"){navigate("/customer")}
-        else {navigate("/vender")}
+    const [role, setRole] = useState('');
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    if (role === 'customer') {
+        navigate('/customer') ;
+    } else if (role === 'vendor') {
+        navigate('/vendor');
     }
+  };
   return <div>
      <div class="parent">
         <div class="child1">
@@ -26,7 +28,7 @@ const LoginPage = () => {
             <label for="" class="mb-2 mt-2">Email here</label>
             <input type="email" class="form-control"/>
             <label for="" class="mb-2 mt-2">Role</label>
-            <select class="form-control" onChange={(e)=>setrole(e.target.value)}>
+            <select class="form-control" onChange={(e)=>setRole(e.target.value)}>
             <option value="customer">Customer</option>
             <option value="vendor">Vendor</option>
             </select>
@@ -38,7 +40,7 @@ const LoginPage = () => {
             <h6>Do'nt have Account?? <Link to='/signup'>SignUp here</Link></h6>
         </div>
         <div class="text-center main mt-3">
-            <button class="btn btn-outline-warning" id="btn1" onClick={handlechange}>Login</button>
+            <button class="btn btn-outline-warning" id="btn1" onClick={handleLogin}>Login</button>
         </div>
         </div>
     </div>

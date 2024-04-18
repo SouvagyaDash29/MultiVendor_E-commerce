@@ -1,48 +1,67 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Products from "../../DB/data";
+import frige from "../../../assets/Camera.webp";
+import { AiFillStar } from "react-icons/ai";
 import "./ProductDetails.css";
 import Product from "../Products/Product";
+import axios from "axios";
 
-const ProductDetails = () => {
+const ProductDetails = ({ results }) => {
   const { id } = useParams();
 
   const [product, setproduct] = useState({});
 
   // const [relatedProduct, setrelatedProduct] = useState([]);
 
-  useEffect(() => {
-    const filteredProduct = Products.filter((product) => product.id === id);
-    // console.log(filteredProduct)
-    setproduct(filteredProduct[0]);
 
-    // const relatedProduct = Products.filter((p) => p.company === product.company)
-    // // console.log(relatedProduct)
-    // setrelatedProduct(relatedProduct)
-  }, [id]);
+  const getId = async () => {
+    axios.get("http://localhost:8080/products/getAll")
+      .then((response) => {
+        const uniqueId = response.data;
+        const test = uniqueId.filter((product)=>product.productId == id);
+        // console.log(test[0]);
+        setproduct(test[0]);
+      })
+  }
+  useEffect(() => {
+    // fetchBrands();
+    getId();
+  }, []);
+
+
+  // useEffect(() => {
+  //   const filteredProduct = Products.filter((product) => product.id === id);
+  //   // console.log(filteredProduct)
+  //   setproduct(filteredProduct[0]);
+
+  //   // const relatedProduct = Products.filter((p) => p.company === product.company)
+  //   // // console.log(relatedProduct)
+  //   // setrelatedProduct(relatedProduct)
+  // }, [id]);
 
   return (
     <>
       <div className="productDetails">
         <div className="productDetails-left">
-          <img src={product.img} alt="img" />
+          <img src={frige} alt="img" />
         </div>
         <div className="productDetails-right">
-          <div className="product-title">{product.title}</div>
+          <div className="product-title">{product.productName}</div>
           <div className="productDetails-price">
-            <label>${product.newPrice}</label>
-            <del>{product.prevPrice}</del>
+            <label>${product.price}</label>
+            <del>$2000</del>
             <span>75% Off</span>
           </div>
           <div className="productDetails-star">
             <div className="star">
-              {product.star}
-              {product.star}
-              {product.star}
-              {product.star}
+              {<AiFillStar />}
+              {<AiFillStar />}
+              {<AiFillStar />}
+              {<AiFillStar />}
             </div>
             <span>400 Ratings</span>
-            <label>{product.reviews}</label>
+            <label>123 reviews</label>
           </div>
           <div className="productDetails-size">
             <h3>Size</h3>
@@ -61,7 +80,7 @@ const ProductDetails = () => {
           </div>
           </div>
           <h3>Description</h3>
-          <span>It is a very nice product</span>
+          <span>{product.productDescription}</span>
         </div>
       </div>
     </>

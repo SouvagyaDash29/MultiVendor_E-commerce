@@ -20,9 +20,9 @@ function App() {
 <>
 
     <Router>
-      {/* <Buyer /> */}
-      {/* <Vender /> */}
-      <Test />
+      <Buyer />
+      {/* <Vendor /> */}
+      {/* <Test /> */}
 
     {/* <LoginPage/> */}
     </Router>

@@ -1,0 +1,52 @@
+.Results{
+    display: flex;
+
+}
+.Electronic-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0.9vw;
+    border: 0.2vw solid #ededed;
+    padding:1vw;
+    cursor: pointer;
+    color: black;
+    border-radius: 0.3vw;
+}
+.ELectronic-card-img img{
+    width: 10vw;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+}
+.Electronic-card-title h3{
+    font-size: 1.2vw;
+    margin-top: 1.4vw;
+    font-weight: 600;
+}
+.Electronic-card-review{
+    display: flex;
+    align-items: center;
+}
+.Electronic-card-review svg{
+    color: #d5ab55;
+}
+.Electronic-total-review{
+    font-size: 1vw;
+    padding-left: 1vw;
+}
+.Electronic-price{
+    display: flex;
+    font-size: 1.05vw;
+    font-weight: 500;
+    padding-top: 0.5vw;
+}
+.Electronic-price del{
+    opacity: 0.5;
+    padding-left: 2vw;
+}
+.Electronic-cart img{
+    margin-top: 0.5vw;
+    margin-left: 0.9vw;
+    width: 3vw;
+}
