@@ -10,10 +10,10 @@ import Signuppage from './pages/Signup/Signuppage';
 const Test = () => {
   return (
     <>
-        <Routes>
+        {/* <Routes>
             <Route path="/login" element={<LoginPage />}/>
             <Route path="/signup" element={<Signuppage />}/>
-        </Routes>
+        </Routes> */}
     </>
   )
 }
