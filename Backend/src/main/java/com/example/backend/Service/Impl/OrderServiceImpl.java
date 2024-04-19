@@ -11,7 +11,6 @@ import com.example.backend.Repositary.OrderRepository;
 import com.example.backend.Service.OrderService;
 import com.example.backend.Service.ProductService;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -23,7 +22,6 @@ public class OrderServiceImpl implements OrderService {
     private final ModelMapper modelMapper;
     private final ProductService productService;
 
-    @Autowired
     public OrderServiceImpl(OrderRepository orderRepository, ModelMapper modelMapper, ProductService productService) {
         this.orderRepository = orderRepository;
         this.modelMapper = modelMapper;

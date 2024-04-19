@@ -1,8 +1,10 @@
 package com.example.backend.Model;
 
-import jakarta.persistence.*;
+
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -26,5 +28,6 @@ public class Product {
 
     @Transient
     private MultipartFile fileData;
+
 
 }
