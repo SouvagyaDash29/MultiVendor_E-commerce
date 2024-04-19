@@ -7,6 +7,7 @@ import com.example.backend.Repositary.UserRepository;
 import com.example.backend.Service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,9 +23,16 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private ModelMapper mapper;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public UserDto createUser(UserDto userDto) {
         User user = this.mapper.map(userDto, User.class);
+        String pass = user.getPassword();
+        String encode = this.passwordEncoder.encode(pass);
+        System.out.println("encode: " + encode);
+        user.setPassword(encode);
         User saveUser = this.userRepository.save(user);
         UserDto saveUserDto = this.mapper.map(saveUser, UserDto.class);
         return saveUserDto;
