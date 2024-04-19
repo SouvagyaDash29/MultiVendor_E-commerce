@@ -35,7 +35,8 @@ public class ProductServiceImpl implements ProductService {
         SubCategory subCategory = subCategoryRepository.findById(productDto.getSubcategoryId())
                 .orElseThrow(() -> new ResourceNotFoundException("SubCategory not found with id: " + productDto.getSubcategoryId()));
         product.setSubCategory(subCategory);
-
+        product.setStock(true);
+        product.setQuantity(productDto.getQuantity());
         MultipartFile fileData = productDto.getFileData();
         if (fileData != null && !fileData.isEmpty()) {
             try {
@@ -61,6 +62,8 @@ public class ProductServiceImpl implements ProductService {
         existingProduct.setPrice(productDto.getPrice());
         existingProduct.setBrand(productDto.getBrand());
         existingProduct.setColor(productDto.getColor());
+        existingProduct.setStock(productDto.isStock());
+        existingProduct.setQuantity(productDto.getQuantity());
 
         if (productDto.getSubcategoryId() != null) {
             SubCategory subCategory = subCategoryRepository.findById(productDto.getSubcategoryId())
@@ -80,9 +83,10 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public void delete(Long productId) {
+    public void delete(Long productId, Boolean stock) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + productId));
+        product.setStock(stock);
         productRepository.delete(product);
     }
 

@@ -46,6 +46,11 @@ public class User implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     Set<Roles> role = new HashSet<>();
 
+    @OneToOne(mappedBy = "user")
+    private Cart cart;
+
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> collect = this.role.stream().map(r -> new SimpleGrantedAuthority(r.getRoleName())).collect(Collectors.toList());

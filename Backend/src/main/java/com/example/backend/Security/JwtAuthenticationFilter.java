@@ -33,12 +33,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
       String requestToken = request.getHeader("Authorization");
-      logger.info("message ()" , requestToken);
+      logger.info("message {}" , requestToken);
 
       String Username = null;
       String jwtToken = null;
 
-      if(requestToken != null && requestToken.trim().startsWith("Bearer ")) {
+      if(requestToken != null && requestToken.trim().startsWith("Bearer")) {
 
           // get actual token
           jwtToken = requestToken.substring(7);
@@ -64,13 +64,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                   UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                   SecurityContextHolder.getContext().setAuthentication(auth);
               }else {
-                  logger.info("not validate Message ","Invalid Jwt Token");
+                  logger.info("not validate Message","Invalid Jwt Token");
               }
           } else {
               logger.info("User Message","username is null or auth is already there");
           }
       } else {
-          logger.info("Token message ()" , "token done not start with Bearer ");
+          logger.info("Token message {}" , "token done not start with Bearer ");
       }
       filterChain.doFilter(request, response);
     }

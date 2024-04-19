@@ -17,8 +17,10 @@ public class Product {
     private Integer price;
     private String brand;
     private String color;
+    private Boolean stock=true;
+    private Integer quantity;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sub_category_id")
     private SubCategory subCategory;
 
@@ -29,5 +31,8 @@ public class Product {
     @Transient
     private MultipartFile fileData;
 
+    public boolean isStock() {
+        return stock != null && stock;
+    }
 
 }

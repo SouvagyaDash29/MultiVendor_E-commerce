@@ -14,6 +14,8 @@ public class ProductDto {
     private Integer price;
     private String brand;
     private String color;
+    private Boolean stock;
+    private Integer quantity;
     private Long subcategoryId;
     private String subcategoryName;
     private Long categoryId;
@@ -21,4 +23,8 @@ public class ProductDto {
     private byte[] productImage;
     @JsonIgnore
     private MultipartFile fileData;
+
+    public boolean isStock() {
+        return stock != null && stock;
+    }
 }
