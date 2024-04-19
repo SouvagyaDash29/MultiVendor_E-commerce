@@ -16,7 +16,7 @@ public class BackendApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println(this.passwordEncoder.encode("ritesh"));
+//        System.out.println(this.passwordEncoder.encode("ritesh"));
     }
 
     public static void main(String[] args) {
