@@ -22,13 +22,13 @@ public class ProductController {
     // create product url
     @PostMapping("/create")
     public ResponseEntity<ProductDto> createProduct(
-            @RequestParam("productName") String productName,
-            @RequestParam("productDescription") String productDescription,
-            @RequestParam("price") int price,
-            @RequestParam("brand") String brand,
-            @RequestParam("color") String color,
-            @RequestParam("subcategoryId") Long subcategoryId,
-            @RequestParam("file") MultipartFile file
+            @RequestParam String productName,
+            @RequestParam String productDescription,
+            @RequestParam int price,
+            @RequestParam String brand,
+            @RequestParam String color,
+            @RequestParam Long subcategoryId,
+            @RequestParam MultipartFile file
     ) {
         // Check if the file is empty or null
         if (file == null || file.isEmpty()) {

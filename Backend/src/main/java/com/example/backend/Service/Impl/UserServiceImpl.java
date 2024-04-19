@@ -7,9 +7,11 @@ import com.example.backend.Repositary.UserRepository;
 import com.example.backend.Service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,9 +23,16 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private ModelMapper mapper;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public UserDto createUser(UserDto userDto) {
-        User user = this.mapper.map(userDto,User.class);
+        User user = this.mapper.map(userDto, User.class);
+        String pass = user.getPassword();
+        String encode = this.passwordEncoder.encode(pass);
+        System.out.println("encode: " + encode);
+        user.setPassword(encode);
         User saveUser = this.userRepository.save(user);
         UserDto saveUserDto = this.mapper.map(saveUser, UserDto.class);
         return saveUserDto;
@@ -31,8 +40,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getById(Long userId) {
-        User findByUserId = this.userRepository.findByUserId(userId).orElseThrow(()-> new ResourceNotFoundException("User Not Found By This Id " + userId ));
-       UserDto userDto = this.mapper.map(findByUserId, UserDto.class);
+        User findByUserId = this.userRepository.findByUserId(userId).orElseThrow(()-> new ResourceNotFoundException("User not found by this id " + userId));
+        UserDto userDto = this.mapper.map(findByUserId, UserDto.class);
         return userDto;
     }
 
@@ -40,7 +49,6 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(Long userId) {
         User findByUserId = this.userRepository.findByUserId(userId).orElseThrow(()-> new ResourceNotFoundException("User not found by this id " + userId));
         this.userRepository.delete(findByUserId);
-
     }
 
     @Override
@@ -63,4 +71,5 @@ public class UserServiceImpl implements UserService {
         User updatedUser = userRepository.save(existingUser);
         return mapper.map(updatedUser, UserDto.class);
     }
+
 }

@@ -1,49 +1,50 @@
 package com.example.backend.Controller;
+
 import com.example.backend.Payload.UserDto;
 import com.example.backend.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Date;
 import java.util.List;
 
-    @RestController
-    @RequestMapping("/users")
-    public class UserController {
+@RestController
+@RequestMapping("/users")
+public class UserController {
 
-        @Autowired
-        private UserService userService;
+    @Autowired
+    private UserService userService;
 
-        @PostMapping("/create")
-        public ResponseEntity<UserDto>createUser(@RequestBody UserDto userDto){
-            Date date = new Date();
-            userDto.setDate(date);
-            UserDto createUser = this.userService.createUser(userDto);
-            return new ResponseEntity<UserDto>(createUser, HttpStatus.CREATED);
-        }
-
-        @GetMapping("/findById/{userId}")
-        public ResponseEntity<UserDto>findUserById(@PathVariable Long userId){
-            UserDto byId = this.userService.getById(userId);
-            return new ResponseEntity<UserDto>(byId,HttpStatus.FOUND);
-        }
-
-        @DeleteMapping("/deleteuser/{userId}")
-        void deleteUser(@PathVariable Long userId){
-            this.userService.deleteUser(userId);
-        }
-
-        @GetMapping("/allUsers")
-        public ResponseEntity<List<UserDto>> findAllUser(){
-            List<UserDto> findAllUser = this.userService.findAllUsers();
-            return new ResponseEntity<List<UserDto>>(findAllUser,HttpStatus.ACCEPTED);
-        }
-
-        @PutMapping("/update/{userId}")
-        public ResponseEntity<UserDto> updateUser(@PathVariable Long userId, @RequestBody UserDto userDto) {
-            UserDto updatedUser = userService.updateUser(userId, userDto);
-            return ResponseEntity.ok(updatedUser);
-        }
+    @PostMapping("/create")
+    public ResponseEntity<UserDto>createUser(@RequestBody UserDto userDto){
+        Date date = new Date();
+        userDto.setDate(date);
+        UserDto createUser = this.userService.createUser(userDto);
+        return new ResponseEntity<UserDto>(createUser, HttpStatus.CREATED);
     }
 
+    @GetMapping("/findById/{userId}")
+    public ResponseEntity<UserDto>findUserById(@PathVariable Long userId){
+        UserDto byId = this.userService.getById(userId);
+        return new ResponseEntity<UserDto>(byId,HttpStatus.FOUND);
+    }
+
+    @DeleteMapping("/deleteuser/{userId}")
+    void deleteUser(@PathVariable Long userId){
+        this.userService.deleteUser(userId);
+    }
+
+    @GetMapping("/allUsers")
+    public ResponseEntity<List<UserDto>> findAllUser(){
+        List<UserDto> findAllUser = this.userService.findAllUsers();
+        return new ResponseEntity<List<UserDto>>(findAllUser,HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping("/update/{userId}")
+    public ResponseEntity<UserDto> updateUser(@PathVariable Long userId, @RequestBody UserDto userDto) {
+        UserDto updatedUser = userService.updateUser(userId, userDto);
+        return ResponseEntity.ok(updatedUser);
+    }
+}
