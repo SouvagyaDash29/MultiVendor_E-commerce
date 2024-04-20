@@ -3,16 +3,17 @@ package com.example.backend.Payload;
 import lombok.Data;
 
 
-public class OrderItemDto {
-    private Long OrderItemId;
+
+public class ItemRequest {
+    private Long productId;
     private Integer quantity;
 
-    public Long getOrderItemId() {
-        return OrderItemId;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setOrderItemId(Long orderItemId) {
-        OrderItemId = orderItemId;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public Integer getQuantity() {

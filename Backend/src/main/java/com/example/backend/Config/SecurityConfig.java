@@ -3,6 +3,7 @@ package com.example.backend.Config;
 import com.example.backend.Security.JwtAuthenticationEntryPoint;
 import com.example.backend.Security.JwtAuthenticationFilter;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.filter.CorsFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -24,11 +25,12 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private CustomUserDetailService customUserDetailService;
-    public static String[] PUBLIC_URL = {"/auth/login"};
+    public static String[] PUBLIC_URL = {};             // "/cart/","/products/create","/auth/login","/users/create"
 
     @Autowired
     private JwtAuthenticationFilter filter;
@@ -42,18 +44,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf()
                 .disable()
-                .authorizeHttpRequests()
+                .authorizeRequests()
                 .antMatchers(PUBLIC_URL).permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
-//                .httpBasic();
-                .exceptionHandling()
-                .authenticationEntryPoint(entryPoint)
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
+                .httpBasic();                             // comment this for jwt
+//                .exceptionHandling()
+//                .authenticationEntryPoint(entryPoint)
+//                .and()
+//                .sessionManagement()
+//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//        http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override

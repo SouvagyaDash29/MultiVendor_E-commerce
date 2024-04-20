@@ -27,6 +27,8 @@ public class ProductController {
             @RequestParam int price,
             @RequestParam String brand,
             @RequestParam String color,
+            @RequestParam boolean stock,
+            @RequestParam Integer quantity,
             @RequestParam Long subcategoryId,
             @RequestParam MultipartFile file
     ) {
@@ -41,6 +43,7 @@ public class ProductController {
         productDto.setPrice(price);
         productDto.setBrand(brand);
         productDto.setColor(color);
+        productDto.setStock(stock);
         productDto.setSubcategoryId(subcategoryId);
         productDto.setFileData(file);
 
@@ -58,7 +61,7 @@ public class ProductController {
     // deleting product url
     @DeleteMapping("/delete/{productId}")
     public ResponseEntity<String> deleteProduct(@PathVariable Long productId) {
-        productService.delete(productId);
+        productService.delete(productId,true);
         return ResponseEntity.ok("Product deleted successfully");
     }
 

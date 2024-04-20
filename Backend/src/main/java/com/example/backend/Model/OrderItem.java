@@ -6,7 +6,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Data
+
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +20,36 @@ public class OrderItem {
     private Order order;
 
     private Integer quantity;
+
+    public Long getOrderItemId() {
+        return OrderItemId;
+    }
+
+    public void setOrderItemId(Long orderItemId) {
+        OrderItemId = orderItemId;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
 }
