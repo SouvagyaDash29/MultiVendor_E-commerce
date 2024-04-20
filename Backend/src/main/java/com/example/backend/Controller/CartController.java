@@ -32,4 +32,11 @@ public class CartController {
         CartDto getcartAll = this.cartService.getCartAll(principal.getName());
         return new ResponseEntity<CartDto>(getcartAll,HttpStatus.ACCEPTED);
     }
+
+    @GetMapping("/{cartId}")
+    public ResponseEntity<CartDto>getCartById(@PathVariable Long cartId){
+        System.out.println(cartId);
+       CartDto cartByID = this.cartService.getCartById(cartId);
+        return new ResponseEntity<CartDto>(cartByID,HttpStatus.OK);
+    }
 }
