@@ -25,11 +25,8 @@ public class CartController {
 
     @PostMapping("/")
     public ResponseEntity<CartDto> addToCart(@RequestBody ItemRequest itemRequest, Principal principal) {
-
-        String email = principal != null ? principal.getName() : "Anonymous";
-        System.out.println("Principal email: " + email);
-//        String email = principal.getName();
-//        System.out.println(email);
+        String email = principal.getName();
+        System.out.println(email);
         CartDto addItem = this.cartService.addItem(itemRequest,principal.getName());
         return new ResponseEntity<CartDto>(addItem, HttpStatus.OK);
     }

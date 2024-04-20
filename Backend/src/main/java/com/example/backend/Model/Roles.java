@@ -1,7 +1,6 @@
 package com.example.backend.Model;
 
-import lombok.Getter;
-import lombok.Setter;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Getter
-@Setter
+
 public class Roles {
     @Id
     @Column(name = "Role_ID", nullable = false)
@@ -24,4 +22,27 @@ public class Roles {
     @ManyToMany(mappedBy = "role")
     Set<User> users = new HashSet<>();
 
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 }

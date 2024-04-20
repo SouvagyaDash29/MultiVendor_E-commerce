@@ -40,26 +40,28 @@ public class CartServiceImpl implements CartService {
        Integer quantity = item.getQuantity();
        User user = this.UserRepository.findByEmail(Username).orElseThrow(()-> new ResourceNotFoundException("User not found"));
        Product product = this.productRepository.findById(productId).orElseThrow(()-> new ResourceNotFoundException("Product not found"));
-       if(product.isStock()){
+       if(!product.isStock()){
             new ResourceNotFoundException("product is out of stock");
        }
 
        CartItem cartItem = new CartItem();
        cartItem.setProduct(product);
        cartItem.setQuantity(quantity);
-       double totalPrice = product.getPrice() *product.getQuantity();
+        double totalPrice = product.getPrice() * quantity;
        cartItem.setTotalPrice(totalPrice);
 
        Cart cart = user.getCart();
        if(cart == null){
-           Cart cart1 = new Cart();
+            cart = new Cart();
+           cart.setUser(user);
        }
        cartItem.setCart(cart);
        Set<CartItem> items = cart.getItems();
 
-        AtomicReference<Boolean> flag = new AtomicReference<>();
+        AtomicReference<Boolean> flag = new AtomicReference<>(false);
        Set<CartItem> newProduct = items.stream().map((i) ->{
            if(i.getProduct().getProductId() == product.getProductId()){
+               i.setQuantity(quantity);
                i.setTotalPrice(totalPrice);
                flag.set(true);
            }
