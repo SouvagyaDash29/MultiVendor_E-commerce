@@ -1,15 +1,15 @@
 package com.example.backend.Payload;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Data
 public class CartItemDto {
     private Long CartItemId;
 
     private Integer quantity;
     private Double totalPrice;
-    private CartDto cartDto;
-    private ProductDto productDto;
+    @JsonIgnore
+    private CartDto cart;
+    private ProductDto product;
 
     public Long getCartItemId() {
         return CartItemId;
@@ -35,19 +35,19 @@ public class CartItemDto {
         this.totalPrice = totalPrice;
     }
 
-    public CartDto getCartDto() {
-        return cartDto;
+    public CartDto getCart() {
+        return cart;
     }
 
-    public void setCartDto(CartDto cartDto) {
-        this.cartDto = cartDto;
+    public void setCart(CartDto cart) {
+        this.cart = cart;
     }
 
-    public ProductDto getProductDto() {
-        return productDto;
+    public ProductDto getProduct() {
+        return product;
     }
 
-    public void setProductDto(ProductDto productDto) {
-        this.productDto = productDto;
+    public void setProduct(ProductDto product) {
+        this.product = product;
     }
 }

@@ -1,6 +1,8 @@
 package com.example.backend.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
         import java.util.HashSet;
 import java.util.Set;
@@ -12,6 +14,7 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long CartID;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "cart",cascade = CascadeType.ALL)
     private Set<CartItem> items = new HashSet<>();
 
