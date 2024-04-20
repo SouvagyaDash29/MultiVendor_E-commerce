@@ -78,4 +78,15 @@ public class CartServiceImpl implements CartService {
       Cart saveCart = this.cartRepository.save(cart);
         return this.modelMapper.map(saveCart,CartDto.class);
     }
+
+    public CartDto getCartAll(String email){
+        //find user
+        User user = this.UserRepository.findByEmail(email).orElseThrow(()->new ResourceNotFoundException("User Not Found"));
+        //find cart
+        Cart cart= this.cartRepository.findByUser(user).orElseThrow(()->new ResourceNotFoundException("There is no cart"));
+
+        return this.modelMapper.map(cart,CartDto.class);
+
+    }
+
 }

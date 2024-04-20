@@ -7,10 +7,7 @@ import com.example.backend.Service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -29,5 +26,10 @@ public class CartController {
         System.out.println(email);
         CartDto addItem = this.cartService.addItem(itemRequest,principal.getName());
         return new ResponseEntity<CartDto>(addItem, HttpStatus.OK);
+    }
+    @GetMapping("/")
+    public ResponseEntity<CartDto>getAllCart(Principal principal){
+        CartDto getcartAll = this.cartService.getCartAll(principal.getName());
+        return new ResponseEntity<CartDto>(getcartAll,HttpStatus.ACCEPTED);
     }
 }
