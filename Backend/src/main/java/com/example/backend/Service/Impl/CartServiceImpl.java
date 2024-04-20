@@ -94,6 +94,14 @@ public class CartServiceImpl implements CartService {
         return this.modelMapper.map(findByUserAndcartId,CartDto.class);
     }
 
-
+    public CartDto removeCartItem(String Username, Long productId){
+        User user = this.UserRepository.findByEmail(Username).orElseThrow(()->new ResourceNotFoundException("User not found"));
+        Cart cart = user.getCart();
+        Set<CartItem> items = cart.getItems();
+        boolean removeif = items.removeIf((i)->i.getProduct().getProductId()==productId);
+        Cart save = this.cartRepository.save(cart);
+        System.out.println(removeif);
+        return this.modelMapper.map(save,CartDto.class);
+    }
 
 }

@@ -39,4 +39,10 @@ public class CartController {
        CartDto cartByID = this.cartService.getCartById(cartId);
         return new ResponseEntity<CartDto>(cartByID,HttpStatus.OK);
     }
+
+    @DeleteMapping("/{productId}")
+    public ResponseEntity<CartDto>deleteCartItemFromCart(@PathVariable Long productId, Principal principal){
+        CartDto remove = this.cartService.removeCartItem(principal.getName(), productId);
+        return new ResponseEntity<CartDto>(remove,HttpStatus.UPGRADE_REQUIRED);
+    }
 }
