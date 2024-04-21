@@ -30,4 +30,11 @@ public class OrderController {
         this.orderService.CancelOrder(orderId);
         return new ResponseEntity<ApiResponse>(new ApiResponse("Order deleted",true),HttpStatus.OK);
     }
+
+    @GetMapping("/{orderId}")
+    public ResponseEntity<OrderDto>findOrderById(@PathVariable Long orderId) {
+        OrderDto orderDto = this.orderService.findOrderById(orderId);
+        return new ResponseEntity<OrderDto>(orderDto, HttpStatus.ACCEPTED);
+    }
+
 }
