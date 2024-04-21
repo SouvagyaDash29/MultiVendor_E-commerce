@@ -3,6 +3,7 @@ package com.example.backend.Payload;
 
 
 import com.example.backend.Model.User;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import java.util.HashSet;
@@ -12,6 +13,7 @@ import java.util.Set;
 public class CartDto {
     private Long CartID;
     private Set<CartItemDto> items = new HashSet<>();
+    @JsonManagedReference
     private UserDto user;
 
     public Long getCartID() {

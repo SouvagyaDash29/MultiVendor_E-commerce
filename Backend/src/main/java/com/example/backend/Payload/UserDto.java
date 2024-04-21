@@ -1,9 +1,6 @@
 package com.example.backend.Payload;
 
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.Date;
 
 
@@ -16,6 +13,8 @@ public class UserDto {
     private String gender;
     private String phone;
     private Date date;
+//    @JsonBackReference
+    private CartDto cart;
 
     public Long getUserId() {
         return userId;
@@ -79,5 +78,13 @@ public class UserDto {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public CartDto getCart() {
+        return cart;
+    }
+
+    public void setCart(CartDto cart) {
+        this.cart = cart;
     }
 }
