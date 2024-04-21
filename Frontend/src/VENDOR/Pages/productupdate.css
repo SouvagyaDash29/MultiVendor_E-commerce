@@ -1,19 +1,17 @@
-.product-registration-container{
+.product-update-container{
     display: inline-block;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     left: 550px;
     top: 130px;
     background-color: white;
   width: 690px;
-  height: 610px;
+  height: 520px;
   border-radius: 5px solid black;
- z-index: 1;
+
 
 }
-
-
 .input-fields {
     
     display: inline-block;
@@ -39,14 +37,23 @@
     left: 10px;
 }
 
-.Product-Registration-heading{
+.Product-update-heading{
     display: flex;
-position: relative;
+position:fixed;
   left: 190px;
+  justify-content: center;
+  align-items: center;
   top: 9px;
 }
+/* CSS styles for error messages */
+.error-message {
+  color: red; /* Red color for error messages */
+  margin-top: 5px; /* Spacing from the input field */
+  font-size: 0.9rem; /* Smaller font size for error messages */
+}
 
-.submit-button {
+
+.update-button {
   
     margin: 3px 0 0 10px;
     background-color: green;
@@ -58,13 +65,13 @@ position: relative;
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     position: absolute;
-    top: 562px;
+    top: 462px;
     cursor: pointer;
   }
 
   
   
-  .reset-button1 {
+  .reset-button {
   
     margin: 3px 0 0 10px;
     background-color: red;
@@ -77,8 +84,7 @@ position: relative;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     position:absolute;
     left: 90px;
-    top: 562px;
+    top: 461px;
     cursor: pointer;
   }
-  
   
