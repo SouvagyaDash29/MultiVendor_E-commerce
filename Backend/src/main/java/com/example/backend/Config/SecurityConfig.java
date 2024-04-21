@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private CustomUserDetailService customUserDetailService;
-    public static String[] PUBLIC_URL = {};             // "/cart/","/products/create","/auth/login","/users/create"
+    public static String[] PUBLIC_URL = {"/auth/login"};             // "/cart/","/products/create","/auth/login","/users/create"
 
     @Autowired
     private JwtAuthenticationFilter filter;
@@ -49,13 +49,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .httpBasic();                             // comment this for jwt
-//                .exceptionHandling()
-//                .authenticationEntryPoint(entryPoint)
-//                .and()
-//                .sessionManagement()
-//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//        http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
+//                .httpBasic();                             // comment this for jwt
+                .exceptionHandling()
+                .authenticationEntryPoint(entryPoint)
+                .and()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override
