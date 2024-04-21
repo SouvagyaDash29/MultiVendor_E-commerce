@@ -1,45 +1,114 @@
 package com.example.backend.Model;
 
-
-import lombok.Data;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "Orders")
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long OrderId;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date orderDate = new Date();
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderItem> orderItems = new ArrayList<>();
+    private Long orderId;
+    private String orderStatus;
+    private String paymentStatus;
+    private Date orderDelivered;
+    private Double orderAmt;
+    private String billingAddress;
+    private Date orderCreatedAt;
+
+    @OneToOne
+    private User user;
+
+    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
+    private Set<OrderItem> orderItem = new HashSet<>();
+
+    public Order(Long orderId, String orderStatus, String paymentStatus, Date orderDelivered, Double orderAmt, String billingAddress, Date orderCreatedAt, User user, Set<OrderItem> orderItem) {
+        this.orderId = orderId;
+        this.orderStatus = orderStatus;
+        this.paymentStatus = paymentStatus;
+        this.orderDelivered = orderDelivered;
+        this.orderAmt = orderAmt;
+        this.billingAddress = billingAddress;
+        this.orderCreatedAt = orderCreatedAt;
+        this.user = user;
+        this.orderItem = orderItem;
+    }
+
+    public Order(){
+        super();
+    }
 
     public Long getOrderId() {
-        return OrderId;
+        return orderId;
     }
 
     public void setOrderId(Long orderId) {
-        OrderId = orderId;
+        this.orderId = orderId;
     }
 
-    public Date getOrderDate() {
-        return orderDate;
+    public String getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
+    public String getPaymentStatus() {
+        return paymentStatus;
     }
 
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
+    public void setPaymentStatus(String paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
+
+    public Date getOrderDelivered() {
+        return orderDelivered;
+    }
+
+    public void setOrderDelivered(Date orderDelivered) {
+        this.orderDelivered = orderDelivered;
+    }
+
+    public Double getOrderAmt() {
+        return orderAmt;
+    }
+
+    public void setOrderAmt(Double orderAmt) {
+        this.orderAmt = orderAmt;
+    }
+
+    public String getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(String billingAddress) {
+        this.billingAddress = billingAddress;
+    }
+
+    public Date getOrderCreatedAt() {
+        return orderCreatedAt;
+    }
+
+    public void setOrderCreatedAt(Date orderCreatedAt) {
+        this.orderCreatedAt = orderCreatedAt;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Set<OrderItem> getOrderItem() {
+        return orderItem;
+    }
+
+    public void setOrderItem(Set<OrderItem> orderItem) {
+        this.orderItem = orderItem;
     }
 }

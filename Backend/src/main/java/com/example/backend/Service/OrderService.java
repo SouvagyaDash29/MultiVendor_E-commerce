@@ -1,10 +1,8 @@
 package com.example.backend.Service;
 
 import com.example.backend.Payload.OrderDto;
-
-import java.util.List;
+import com.example.backend.Payload.OrderRequest;
 
 public interface OrderService {
-    OrderDto createOrder(Long productId, Integer quantity);
-    List<OrderDto> getAllOrder();
+    OrderDto createOrder(OrderRequest request, String Username);
 }

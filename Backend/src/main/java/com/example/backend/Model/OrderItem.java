@@ -1,32 +1,40 @@
 package com.example.backend.Model;
 
-
-import lombok.Data;
-
 import javax.persistence.*;
 
 @Entity
-
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long OrderItemId;
+    private Long orderItemId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne
     private Product product;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
-    private Order order;
-
+    private Double totalproductprice;
     private Integer quantity;
 
+    @ManyToOne
+    private Order order;
+
+    public OrderItem(Long orderItemId, Product product, double totalproductprice, Order order) {
+        this.orderItemId = orderItemId;
+        this.product = product;
+        this.totalproductprice = totalproductprice;
+        this.order = order;
+    }
+
+    public OrderItem() {
+        super();
+    }
+
+
     public Long getOrderItemId() {
-        return OrderItemId;
+        return orderItemId;
     }
 
     public void setOrderItemId(Long orderItemId) {
-        OrderItemId = orderItemId;
+        this.orderItemId = orderItemId;
     }
 
     public Product getProduct() {
@@ -43,6 +51,14 @@ public class OrderItem {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public Double getTotalproductprice() {
+        return totalproductprice;
+    }
+
+    public void setTotalproductprice(Double totalproductprice) {
+        this.totalproductprice = totalproductprice;
     }
 
     public Integer getQuantity() {
