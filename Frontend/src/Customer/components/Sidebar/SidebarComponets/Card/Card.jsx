@@ -2,8 +2,20 @@ import React from "react";
 // import { AiFillStar } from "react-icons/ai";
 import Cart from "../../../../../assets/svg/Group 1269.svg";
 import { Link } from "react-router-dom";
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
-const Card = ({ id, img, title, star, reviews, newPrice, prevPrice }) => {
+const Card = ({ id, img, title, star, reviews, newPrice, prevPrice,cart,setCart }) => {
+
+  const addToCart =(id,newPrice,title,img) =>{
+    const obj = {
+      id,newPrice,title,img
+    }
+    setCart([...cart,obj]);
+    console.log("Cart items are = ",cart);
+  }
+  
+
   return (
     <>
       <section className="customer-section-card" key={id}>
@@ -25,7 +37,7 @@ const Card = ({ id, img, title, star, reviews, newPrice, prevPrice }) => {
               <del>{prevPrice}</del>
             </div>
             <div className="bag">
-              <img src={Cart} alt="cart-button" />
+              <img src={Cart} alt="cart-button" onClick={()=>addToCart(id,newPrice,title,img)}/>
             </div>
           </section>
         </div>

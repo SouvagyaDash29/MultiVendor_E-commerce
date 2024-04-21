@@ -1,30 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import './Login.css'
 import loginphoto from './login.svg'
 import Signuppage from "../Signup/Signuppage";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+
 const LoginPage = () => {
+    const navigate = useNavigate()
+    const[role,setrole]=useState('');
+    const handlechange = (event) =>{
+        event.preventDefault();
+        alert(role)
+        if(role==="customer"){navigate("/customer")}
+        else {navigate("/vender")}
+    }
   return <div>
      <div class="parent">
         <div class="child1">
-            <img src={loginphoto} alt="" height="500px " width="500px" class="rounded-lg"/>
+            <img id="limg" src={loginphoto} alt="" height="500px " width="500px" class="rounded-lg"/>
         </div>
-        <div style={{marginLeft:'20px'}} >
-           <h3 class="mt-5 me-4" id="heading">Please Login here!!!!!!</h3>
-           <div class="card-body me-3" >
-            <label for="" class="mb-2 mt-2">Name</label>
-            <input type="text" class="form-control"/>
-            <label for="" class="mb-2 mt-2">Email</label>
-            <input type="email" class="form-control"/>
-            <label for="" class="mb-2 mt-2">Password</label>
-            <input type="password" class="form-control"/>
+        <div style={{marginLeft:'15px'}} id="customerDetails" >
+           <h3 class="" id="heading">Please Login here!!!!!!</h3>
+           <div class="" >
+            <label for="" class="">Name here</label>
+            <input type="text" class=""/>
+            <label for="" class="">Email here</label>
+            <input type="email" class=""/>
+            <label for="" class="">Role</label>
+            <select class="" onChange={(e)=>setrole(e.target.value)}>
+            <option value="customer">Customer</option>
+            <option value="vendor">Vendor</option>
+            </select>
+            <label for="" class="">Password</label>
+            <input type="password" class=""/>
             
         </div>
-        <div class="card-footer text-center mt-2">
+        <div class="">
             <h6>Do'nt have Account?? <Link to='/signup'>SignUp here</Link></h6>
         </div>
-        <div class="text-center main mt-3">
-            <button class="btn btn-outline-warning" id="btn1">Login</button>
+        <div class="">
+            <button class="" id="btn1" onClick={handlechange}>Login</button>
         </div>
         </div>
     </div>
