@@ -74,4 +74,10 @@ public class OrderServiceImpl implements OrderService {
 
         return this.modelMapper.map(save, OrderDto.class);
     }
+
+    public void CancelOrder(Long orderId) {
+       Order order = this.orderRepository.findById(orderId).orElseThrow(()->new ResourceNotFoundException("Order not found"));
+        this.orderRepository.delete(order);
+    }
+
 }
