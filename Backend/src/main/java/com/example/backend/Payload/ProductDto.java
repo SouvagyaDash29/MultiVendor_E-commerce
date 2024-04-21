@@ -1,10 +1,14 @@
 package com.example.backend.Payload;
 
 
+import com.example.backend.Model.Image;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Set;
+
 @Data
 public class ProductDto {
     private Long productId;
@@ -15,13 +19,12 @@ public class ProductDto {
     private String color;
     private Boolean stock;
     private int quantity;
+//    private String imageName;
+private Set<Image> productImages;
     private Long subcategoryId;
     private String subcategoryName;
     private Long categoryId;
     private String categoryName;
-    private byte[] productImage;
-    @JsonIgnore
-    private MultipartFile fileData;
 
     public boolean isStock() {
         return stock != null && stock;
@@ -91,6 +94,14 @@ public class ProductDto {
         this.quantity = quantity;
     }
 
+//    public String getImageName() {
+//        return imageName;
+//    }
+//
+//    public void setImageName(String imageName) {
+//        this.imageName = imageName;
+//    }
+
     public Long getSubcategoryId() {
         return subcategoryId;
     }
@@ -123,19 +134,11 @@ public class ProductDto {
         this.categoryName = categoryName;
     }
 
-    public byte[] getProductImage() {
-        return productImage;
+    public Set<Image> getProductImages() {
+        return productImages;
     }
 
-    public void setProductImage(byte[] productImage) {
-        this.productImage = productImage;
-    }
-
-    public MultipartFile getFileData() {
-        return fileData;
-    }
-
-    public void setFileData(MultipartFile fileData) {
-        this.fileData = fileData;
+    public void setProductImages(Set<Image> productImages) {
+        this.productImages = productImages;
     }
 }

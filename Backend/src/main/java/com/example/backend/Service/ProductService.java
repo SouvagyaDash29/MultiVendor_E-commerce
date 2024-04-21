@@ -1,6 +1,7 @@
 package com.example.backend.Service;
 
 import com.example.backend.Payload.ProductDto;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -12,4 +13,5 @@ public interface ProductService {
     List<ProductDto> getAll();
     List<ProductDto> findProductBySubCategory(Long subcategoryId);
     List<ProductDto> findProductByCategory(Long categoryId);
+//    String uploadImage(MultipartFile file);
 }

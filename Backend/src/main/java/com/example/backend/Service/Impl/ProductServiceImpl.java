@@ -12,9 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,6 +33,28 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ModelMapper modelMapper;
 
+//    @Override
+//    public String uploadImage(MultipartFile file) {
+//        String originalFilename = file.getOriginalFilename();
+//        String randomImageName = UUID.randomUUID().toString();
+//        String randomImageNameWithExtension = randomImageName + originalFilename.substring(originalFilename.lastIndexOf("."));
+//        String fullPath = "/path/to/your/upload/directory/" + randomImageNameWithExtension; // Update this path
+//        File folderFile = new File(fullPath);
+//
+//        if (!folderFile.exists()) {
+//            folderFile.mkdirs();
+//        }
+//
+//        try {
+//            Files.copy(file.getInputStream(), Paths.get(fullPath));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            throw new RuntimeException("Failed to upload image");
+//        }
+//
+//        return randomImageNameWithExtension;
+//    }
+
     @Override
     public ProductDto create(ProductDto productDto) {
         Product product = modelMapper.map(productDto, Product.class);
@@ -37,16 +63,6 @@ public class ProductServiceImpl implements ProductService {
         product.setSubCategory(subCategory);
         product.setStock(true);
         product.setQuantity(productDto.getQuantity());
-        MultipartFile fileData = productDto.getFileData();
-        if (fileData != null && !fileData.isEmpty()) {
-            try {
-                byte[] imageData = fileData.getBytes();
-                String encodedImage = Base64.getEncoder().encodeToString(imageData);
-                product.setProductImage(encodedImage.getBytes());
-            } catch (IOException e) {
-                throw new RuntimeException("Failed to save product image", e);
-            }
-        }
 
         Product savedProduct = productRepository.save(product);
         return modelMapper.map(savedProduct, ProductDto.class);
@@ -70,13 +86,6 @@ public class ProductServiceImpl implements ProductService {
                     .orElseThrow(() -> new ResourceNotFoundException("SubCategory not found with id: " + productDto.getSubcategoryId()));
             existingProduct.setSubCategory(subCategory);
         }
-        if (productDto.getFileData() != null) {
-            try {
-                existingProduct.setProductImage(productDto.getFileData().getBytes());
-            } catch (IOException e) {
-                throw new RuntimeException("Failed to update product image", e);
-            }
-        }
         Product updatedProduct = productRepository.save(existingProduct);
         return modelMapper.map(updatedProduct, ProductDto.class);
     }
@@ -96,7 +105,6 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + productId));
 
         ProductDto productDto = modelMapper.map(product, ProductDto.class);
-        productDto.setProductImage(product.getProductImage());
 
         if (product.getSubCategory() != null) {
             productDto.setSubcategoryName(product.getSubCategory().getSubcategoryName());

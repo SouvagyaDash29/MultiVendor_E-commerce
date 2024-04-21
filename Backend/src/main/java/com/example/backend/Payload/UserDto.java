@@ -1,6 +1,8 @@
 package com.example.backend.Payload;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.util.Date;
 
 
@@ -13,7 +15,7 @@ public class UserDto {
     private String gender;
     private String phone;
     private Date date;
-//    @JsonBackReference
+    @JsonBackReference
     private CartDto cart;
 
     public Long getUserId() {

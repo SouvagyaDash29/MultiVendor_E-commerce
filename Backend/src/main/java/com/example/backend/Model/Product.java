@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 
@@ -21,16 +22,15 @@ public class Product {
     @Column(nullable = false)
     private int quantity;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "product_images",joinColumns = {@JoinColumn(name = "product_id")},inverseJoinColumns = {@JoinColumn(name = "image_Id")})
+    private Set<Image> productImages;
+//    private String imageName;
+
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sub_category_id")
     private SubCategory subCategory;
-
-    @Lob
-    @Column(columnDefinition = "MEDIUMBLOB")
-    private byte[] productImage;
-
-    @Transient
-    private MultipartFile fileData;
 
     public boolean isStock() {
         return stock != null && stock;
@@ -108,19 +108,19 @@ public class Product {
         this.subCategory = subCategory;
     }
 
-    public byte[] getProductImage() {
-        return productImage;
+    public Set<Image> getProductImages() {
+        return productImages;
     }
 
-    public void setProductImage(byte[] productImage) {
-        this.productImage = productImage;
+    public void setProductImages(Set<Image> productImages) {
+        this.productImages = productImages;
     }
 
-    public MultipartFile getFileData() {
-        return fileData;
-    }
-
-    public void setFileData(MultipartFile fileData) {
-        this.fileData = fileData;
-    }
+    //    public String getImageName() {
+//        return imageName;
+//    }
+//
+//    public void setImageName(String imageName) {
+//        this.imageName = imageName;
+//    }
 }

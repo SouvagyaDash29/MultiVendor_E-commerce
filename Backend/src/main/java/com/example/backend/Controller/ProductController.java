@@ -1,15 +1,22 @@
 package com.example.backend.Controller;
 
+import com.example.backend.Model.Image;
+import com.example.backend.Payload.ImageDto;
 import com.example.backend.Payload.ProductDto;
 import com.example.backend.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/products")
@@ -19,9 +26,24 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    public Set<Image> uploadImage(MultipartFile[] multipartFiles) throws IOException {
+        Set<Image> imageSet = new HashSet<>();
+
+        for(MultipartFile file: multipartFiles) {
+            Image image = new Image(
+                    file.getOriginalFilename(),
+                    file.getContentType(),
+                    file.getBytes()
+            );
+            imageSet.add(image);
+        }
+        return imageSet;
+    }
+
     // create product url
-    @PostMapping("/create")
-    public ResponseEntity<ProductDto> createProduct(
+    @PostMapping(value = "/create", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    public ResponseEntity<?> createProduct(
+            @RequestPart("product_image") MultipartFile[] file,
             @RequestParam String productName,
             @RequestParam String productDescription,
             @RequestParam int price,
@@ -29,26 +51,28 @@ public class ProductController {
             @RequestParam String color,
             @RequestParam boolean stock,
             @RequestParam Integer quantity,
-            @RequestParam Long subcategoryId,
-            @RequestParam MultipartFile file
+            @RequestParam Long subcategoryId
     ) {
-        // Check if the file is empty or null
-        if (file == null || file.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        try {
+            Set<Image> images = uploadImage(file);
+
+            ProductDto productDto = new ProductDto();
+            productDto.setProductName(productName);
+            productDto.setProductDescription(productDescription);
+            productDto.setPrice(price);
+            productDto.setBrand(brand);
+            productDto.setColor(color);
+            productDto.setStock(stock);
+            productDto.setQuantity(quantity);
+            productDto.setSubcategoryId(subcategoryId);
+            productDto.setProductImages(images); // Set the images
+
+            ProductDto createdProduct = productService.create(productDto);
+            return new ResponseEntity<>(createdProduct, HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(Map.of("Message", "Error creating product"), HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
-        ProductDto productDto = new ProductDto();
-        productDto.setProductName(productName);
-        productDto.setProductDescription(productDescription);
-        productDto.setPrice(price);
-        productDto.setBrand(brand);
-        productDto.setColor(color);
-        productDto.setStock(stock);
-        productDto.setSubcategoryId(subcategoryId);
-        productDto.setFileData(file);
-
-        ProductDto createdProduct = productService.create(productDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
     }
 
     //updating product url
