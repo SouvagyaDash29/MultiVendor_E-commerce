@@ -11,11 +11,13 @@ import Shoes from "./pages/Shoes/Shoes";
 import ProductDetails from './components/ProductDetails/ProductDetails';
 import SearchItem from "./components/SearchItem/SearchItem";
 import item from "./DB/data";
-
+import { useState } from "react";
 const Buyer = () => {
+  const [cart, setCart] = useState([])
   return (
+    
     <body> 
-      <Header />
+      <Header  cart={cart}/>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
