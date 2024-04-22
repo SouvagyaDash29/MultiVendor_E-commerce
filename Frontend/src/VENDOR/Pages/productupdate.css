@@ -1,0 +1,90 @@
+.product-update-container{
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 550px;
+    top: 130px;
+    background-color: white;
+  width: 690px;
+  height: 520px;
+  border-radius: 5px solid black;
+
+
+}
+.input-fields {
+    
+    display: inline-block;
+    width: 50%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    position: relative;
+    left: 27px;
+    top: 20px;
+  }
+  
+.labels{
+    display: block;
+    position: relative;
+    top: 20px;
+    left: 10px;
+}
+
+.Product-update-heading{
+    display: flex;
+position:fixed;
+  left: 190px;
+  justify-content: center;
+  align-items: center;
+  top: 9px;
+}
+/* CSS styles for error messages */
+.error-message {
+  color: red; /* Red color for error messages */
+  margin-top: 5px; /* Spacing from the input field */
+  font-size: 0.9rem; /* Smaller font size for error messages */
+}
+
+
+.update-button {
+  
+    margin: 3px 0 0 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    position: absolute;
+    top: 462px;
+    cursor: pointer;
+  }
+
+  
+  
+  .reset-button {
+  
+    margin: 3px 0 0 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    position:absolute;
+    left: 90px;
+    top: 461px;
+    cursor: pointer;
+  }
+  

@@ -1,6 +1,6 @@
 /* Product.css */
 .products-container {
-    position: fixed;
+    position: absolute;
     width: 75%;
     margin: 0 auto;
     padding: 20px;

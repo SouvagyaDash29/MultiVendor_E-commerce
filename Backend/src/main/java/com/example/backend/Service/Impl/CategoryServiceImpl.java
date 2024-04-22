@@ -33,7 +33,6 @@ public class CategoryServiceImpl implements CategoryService {
         Category existingCategory = categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new ResourceNotFoundException("Category not found with id: " + categoryId));
 
-        // Update the fields
         existingCategory.setCategoryName(categoryDto.getCategoryName());
 
         Category updatedCategory = categoryRepository.save(existingCategory);

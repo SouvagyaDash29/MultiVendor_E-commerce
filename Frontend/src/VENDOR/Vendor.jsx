@@ -10,6 +10,8 @@ import TransactionsPage from "./Pages/Transaction";
 import VendorProfilePage from "./Pages/VendorProfile";
 import Logout from "./Pages/Logout";
 import VendorDashboard from "./Components/Home/Vendor_Home";
+import ProductUpdate from "./Pages/UpdateProduct";
+import AddCategory from "./Pages/Addcategory_and_brand";
 
 const Vendor = () => {
   return (
@@ -24,6 +26,8 @@ const Vendor = () => {
         <Route path="/Report" element={<Reports />} />
         <Route path="/Logout" element={<Logout />} />
         <Route path="/ProductRegistration" element={<ProductRegistration />} /> 
+        <Route path="/UpdateProduct/:productid" element={<ProductUpdate />} />
+        <Route path="/addcategory" element={<AddCategory/>}/>
       </Routes>
     </div>
   );

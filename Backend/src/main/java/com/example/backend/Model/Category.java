@@ -1,12 +1,13 @@
 package com.example.backend.Model;
 
-import jakarta.persistence.*;
+
 import lombok.Data;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
+
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,4 +16,28 @@ public class Category {
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<SubCategory> subCategories;
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public List<SubCategory> getSubCategories() {
+        return subCategories;
+    }
+
+    public void setSubCategories(List<SubCategory> subCategories) {
+        this.subCategories = subCategories;
+    }
 }
