@@ -1,5 +1,7 @@
 .Results{
-    display: flex;
+    display: grid;
+    gap: 1.8vw;
+    grid-template-columns: repeat(4,1fr);
 
 }
 .Electronic-card{
@@ -7,7 +9,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0.9vw;
+    /* margin: 0.9vw; */
     border: 0.2vw solid #ededed;
     padding:1vw;
     cursor: pointer;
@@ -15,14 +17,15 @@
     border-radius: 0.3vw;
 }
 .ELectronic-card-img img{
-    width: 10vw;
+    width: 9vw;
     aspect-ratio: 3/2;
     object-fit: contain;
 }
-.Electronic-card-title h3{
-    font-size: 1.2vw;
-    margin-top: 1.4vw;
-    font-weight: 600;
+.Electronic-card-title {
+    font-family: Poppins, sans-serif;
+    font-size: 1.13vw;
+    margin-top: 1.3vw;
+    font-weight: 500;
 }
 .Electronic-card-review{
     display: flex;
@@ -32,7 +35,7 @@
     color: #d5ab55;
 }
 .Electronic-total-review{
-    font-size: 1vw;
+    font-size: 0.9vw;
     padding-left: 1vw;
 }
 .Electronic-price{
@@ -49,4 +52,121 @@
     margin-top: 0.5vw;
     margin-left: 0.9vw;
     width: 3vw;
+}
+.Electronic-sidebar{
+    width: 17%;
+    position: fixed;
+    height: 100%;
+    border-right: 0.2vw solid #e5e5e5;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+.Electronic-product{
+    margin-left: 19vw;
+    display: flex;
+    row-gap: 1.5vw;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+}
+.Electronic-sidebar-title {
+    font-size: 1.2vw;
+    font-weight: 600;
+    margin-bottom: 1vw;
+  }
+  
+  .Electronic-sidebar-label{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.3vw;
+  }
+  .Electronic-sidebar-label label{
+    font-size: 0.9vw;
+  }
+  
+  .Electronic-sidebar-label-container {
+    display: block;
+    position: relative;
+    padding-left: 2.3vw;
+    margin-bottom: 0.8vw;
+    cursor: pointer;
+    font-size: 1vw;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .Electronic-sidebar-label-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .Electronic-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0.6vw;
+    height: 1.1vw;
+    width: 1.1vw;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  .all {
+    background: linear-gradient(blue, crimson);
+  }
+  
+  .Electronic-sidebar-label-container:hover input ~ .Electronic-checkmark {
+    background-color: #ccc;
+  }
+  
+  .Electronic-sidebar-label-container input:checked ~ .Electronic-checkmark {
+    background-color: #2196f3;
+  }
+  
+  .Electronic-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .Electronic-sidebar-label-container input:checked ~ .Electronic-checkmark:after {
+    display: block;
+  }
+  
+  .Electronic-sidebar-label-container .Electronic-checkmark:after {
+    top: 0.31vw;
+    left: 0.32vw;
+    width: 0.5vw;
+    height: 0.5vw;
+    border-radius: 50%;
+    background: white;
+  }
+  
+  /* .line {
+    margin-top: 3rem;
+    border-color: #f7f7f7;
+  } */
+  .Electronic-categories{
+    /* margin-left: 2vw; */
+    margin-top: 0.5vw;
+    font-size: 1.2vw;
+    font-weight: 600;
+}
+.Electronic-categories-btns{
+    display: flex;
+    margin-top: 0.5vw;
+}
+.Electronic-btns{
+    padding: 0.2vw 1vw;
+    margin-right: 0.8vw;
+    background: transparent;
+    border: none;
+    border: 0.14vw solid #ccc;
+    border-radius: 0.5vw;
+    color: #323232;
+    cursor: pointer;
 }

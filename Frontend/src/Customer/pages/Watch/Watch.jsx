@@ -60,7 +60,7 @@ const Watch = ({ results }) => {
   //API call to get brand name and color
   const fetchBrands = async () => {
     axios
-      .get("http://localhost:8080/products/subcategory/6")
+      .get("http://localhost:8080/products/byCategory/3")
       .then((response) => {
         const uniqueBrands = [
           ...new Set(response.data.map((product) => product.brand)),

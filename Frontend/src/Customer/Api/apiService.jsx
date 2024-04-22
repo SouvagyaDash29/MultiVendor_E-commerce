@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const getResults = async (subcategoryId) => {
+export const getResults = async (categoryId) => {
   try {
-    const response = await axios.get(`http://localhost:8080/products/subcategory/${subcategoryId}`);
+    const response = await axios.get(`http://localhost:8080/products/byCategory/${categoryId}`);
     return response.data;
   } catch (error) {
     console.log(error);

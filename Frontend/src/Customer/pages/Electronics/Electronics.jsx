@@ -10,337 +10,300 @@ import { subCategory } from "../../Api/apiService";
 import { Link } from "react-router-dom";
 
 
-//handle for brand filter
-
-// const BrandRadioGroup = ({ handleBrandChange }) => {
-//   return (
-//     <div>
-//       <input
-//         type="radio"
-//         id="alL"
-//         name="brand"
-//         value=""
-//         onChange={() => handleBrandChange("")}
-//       />
-//       <label htmlFor="alL">All</label>
-//       <br />
-//       <input
-//         type="radio"
-//         id="logitech"
-//         name="brand"
-//         value="Logitech"
-//         onChange={() => handleBrandChange("Logitech")}
-//       />
-//       <label htmlFor="logitech">Logitech</label>
-//       <br />
-//       <button onClick={() => handleBrandChange("Arctic Fox ")}>
-//         Artic Fox
-//       </button>
-//     </div>
-//   );
-// };
-
-//handle for price filter
-
+//Price Radio Button functionality
 const PriceRangeRadioGroup = ({ handlePriceRangeChange }) => {
   return (
-    <div>
-      <input
-        type="radio"
-        id="500-1000"
-        name="priceRange"
-        value="2000-3000"
-        onChange={() => handlePriceRangeChange({ min: 500, max: 1000 })}
-      />
-      <label htmlFor="500-1000">$500 - $1000</label>
-      <br />
-      <input
-        type="radio"
-        id="all"
-        name="priceRange"
-        value=""
-        onChange={() => handlePriceRangeChange("")}
-      />
-      <label htmlFor="all">All</label>
-      <br />
-    </div>
+    <>
+      <h2 className="Electronic-sidebar-title">Price</h2>
+      <div className="Electronic-sidebar-price-label">
+        <label htmlFor="All" className="Electronic-sidebar-label-container">
+          <input
+            type="radio"
+            id="All"
+            name="priceRange"
+            value=""
+            onChange={() => handlePriceRangeChange({ min: 0, max: Infinity })}
+          />
+          <span className="Electronic-checkmark"></span>All
+        </label>
+        <label htmlFor="500-1000" className="Electronic-sidebar-label-container">
+          <input
+            type="radio"
+            id="500-1000"
+            name="priceRange"
+            value="500-1000"
+            onChange={() => handlePriceRangeChange({ min: 2000, max: 4000 })}
+          />
+          <span className="Electronic-checkmark"></span>$2000 - $4000
+        </label>
+
+        <label htmlFor="3000-5000" className="Electronic-sidebar-label-container">
+          <input
+            type="radio"
+            id="3000-5000"
+            name="priceRange"
+            value="3000-5000"
+            onChange={() => handlePriceRangeChange({ min: 4000, max: 6000 })}
+          />
+          <span className="Electronic-checkmark"></span>$4000 - $6000
+        </label>
+
+        <label htmlFor="4000-6000" className="Electronic-sidebar-label-container">
+          <input
+            type="radio"
+            id="4000-6000"
+            name="priceRange"
+            value="4000-6000"
+            onChange={() => handlePriceRangeChange({ min: 6000, max: 8000 })}
+          />
+          <span className="Electronic-checkmark"></span>$6000 - $8000
+        </label>
+
+        <label htmlFor="8000-10000" className="Electronic-sidebar-label-container">
+          <input
+            type="radio"
+            id="8000-10000"
+            name="priceRange"
+            value="8000-10000"
+            onChange={() => handlePriceRangeChange({ min: 8000, max: 10000 })}
+          />
+          <span className="Electronic-checkmark"></span>$8000 - $10000
+        </label>
+      </div>
+    </>
   );
 };
 
-//handle for color filter
-
-// const ColorRadioGroup = ({ handleColorChange }) => {
-//   return (
-//     <div>
-//       <input
-//         type="radio"
-//         id="black"
-//         name="color"
-//         value="black"
-//         onChange={() => handleColorChange("Black")}
-//       />
-//       <label htmlFor="black">Black</label>
-//       <br />
-//       <input
-//         type="radio"
-//         id="All"
-//         name="color"
-//         value=""
-//         onChange={() => handleColorChange("")}
-//       />
-//       <label htmlFor="All">All</label>
-//       <br />
-//     </div>
-//   );
-// };
-
 const Electronics = ({ results }) => {
   const [brands, setBrands] = useState([]);
-  const [id, setId] = useState("");
   const [colors, setColors] = useState([]);
+  const [subCategories, setSubCategories] = useState([]);
   const [brand, setBrand] = useState("");
-  const [priceRange, setPriceRange] = useState("");
+  const [priceRange, setPriceRange] = useState({ min: 0, max: Infinity });
   const [color, setColor] = useState("");
+  const [subCategory, setSubCategory] = useState("");
 
-  
-  //API call to get brand name and color
+
+  //get filter for Barnd, color, and Category
   const fetchBrands = async () => {
-    axios
-      .get("http://localhost:8080/products/subcategory/5")
-      .then((response) => {
-        const uniqueBrands = [
-          ...new Set(response.data.map((product) => product.brand)),
-        ];
-        const uniqueColor = [
-          ...new Set(response.data.map((product) => product.color)),
-        ];
-        setBrands(uniqueBrands);
-        setColors(uniqueColor);
-        // console.log(results)
-      });
-    };
-    
-  //   const getId = async () => {
-  //     axios
-  //     .get("http://localhost:8080/products/subcategory/5")
-  //     .then((response) => {
-  //       const uniqueId = response.data.map((product) => product.productId);
-  //       console.log(uniqueId);
-  //       setId(uniqueId);
-  //     })
-  // }
-  // const getId = (results) => {
-  //   const productIds = results.map((product) => product.productId);
-  //   console.log(productIds);
-  //   return productIds; // Optionally, you can return the array of product IDs
-  // }
-  
+    try {
+      const response = await axios.get(
+        "http://localhost:8080/products/byCategory/2"
+      );
+      const uniqueBrands = [
+        ...new Set(response.data.map((product) => product.brand)),
+      ];
+      const uniqueColors = [
+        ...new Set(response.data.map((product) => product.color.toUpperCase())),
+      ];
+      const uniqueSubCategories = [
+        ...new Set(response.data.map((product) => product.subcategoryName)),
+      ];
+      setBrands(uniqueBrands);
+      setColors(uniqueColors);
+      setSubCategories(uniqueSubCategories);
+    } catch (error) {
+      console.error("Error fetching brands:", error);
+    }
+  };
 
   useEffect(() => {
     fetchBrands();
-    // getId();
   }, []);
 
 
-
-  // filtration for brand, price, and color
+  //filter function for brand , price, color and category
   const filteredProducts = useMemo(() => {
-    return results.filter((product) => {
-      return (
-        (!brand || product.brand === brand) &&
-        (!priceRange ||
-          (product.price >= priceRange.min &&
-            product.price <= priceRange.max)) &&
-        (!color || product.color === color)
-      );
-    });
-  }, [results, brand, priceRange, color]);
+    return (
+      results?.filter((product) => {
+        return (
+          (!brand || product.brand === brand) &&
+          product.price >= priceRange.min &&
+          product.price <= priceRange.max &&
+          (!color || product.color === color) &&
+          (!subCategory || product.subcategoryName === subCategory)
+        );
+      }) ?? []
+    );
+  }, [results, brand, priceRange, color, subCategory]);
 
-  // Function to handle brand change
   const handleBrandChange = (brandValue) => {
     setBrand(brandValue);
   };
 
-  // Function to handle price range change
   const handlePriceRangeChange = (priceRangeValue) => {
     setPriceRange(priceRangeValue);
   };
 
-  // Function to handle color change
   const handleColorChange = (colorValue) => {
     setColor(colorValue);
   };
 
-  //clear all filter properties
-  const resetFilters = () => {
-    setBrand("");
-    setPriceRange("");
-    setColor("");
+  const handleSubCategoryChange = (subCategoryValue) => {
+    setSubCategory(subCategoryValue);
   };
 
-  // console.log({subCategory})
+  const resetFilters = () => {
+    setBrand("");
+    setPriceRange({ min: 0, max: Infinity });
+    setColor("");
+    setSubCategory("");
+  };
 
-  // const [products, setProducts] = useState([]);
-  // const [selectCategory, setSelectCategory] = useState(null);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [error, setError] = useState(null);
-
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-
-  // const fetchData = async () => {
-  //   setIsLoading(true);
-  //   try {
-  //     const response = await fetch("http://localhost:8080/products/subcategory/5");
-  //     if (!response.ok) {
-  //       throw new Error("Failed to fetch data");
-  //     }
-  //     const data = await response.json();
-  //     setProducts(data);
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  //   setIsLoading(false);
-  // };
-
-  // const handleChange = (event) => {
-  //   setSelectCategory(event.target.value);
-  // };
-
-  // const handleClick = (event) => {
-  //   setSelectCategory(event.target.value);
-  // };
-
-  // const filteredProducts = products.filter((product) => {
-  //   if (!selectCategory) return true;
-  //   return product.category === selectCategory;
-  // });
-  // if (!results || results.length === 0) {
-  //   return <div>No results found</div>; // Render a message indicating no results
-  // }
-
-  // // Check if filteredProducts array is empty after applying filters
-  // if (filteredProducts.length === 0) {
-  //   return <div>Product not found</div>; // Render a message indicating no products found after applying filters
-  // }
-
-  // // Check if results is undefined or empty
-  // // if (!filteredProducts || filteredProducts.length === 0) {
-  // //   return <div>No results found</div>; // Render a message indicating no results
-  // // }
-
-  const hasFilteredProducts = results.length > 0;
+  const hasFilteredProducts = filteredProducts.length > 0;
 
   return (
     <>
-      {/* <BrandRadioGroup handleBrandChange={handleBrandChange} /> */}
-      <div>
-        {brands.map((brand) => (
-          <button key={brand} onClick={() => handleBrandChange(brand)}>
-            {brand}
-          </button>
-        ))}
-        <button onClick={() => handleBrandChange("")}>All</button>
-      </div>
+    {/* sidebar */}
 
-      <PriceRangeRadioGroup handlePriceRangeChange={handlePriceRangeChange} />
-      {/* <ColorRadioGroup handleColorChange={handleColorChange} /> */}
-
-      <div>
-        {colors.map((color) => (
-          <div key={color}>
-            <input
-              type="radio"
-              id={color}
-              name="color"
-              value={color}
-              onChange={() => handleColorChange(color)}
-            />
-            <label htmlFor={color}>{color}</label>
-            <br />
+    {/* Category in sidebar */}
+      <div className="Electronic-sidebar">
+        <div>
+          <h2 className="Electronic-sidebar-title"> Category</h2>
+          <div className="Electronic-sidebar-label">
+            <label htmlFor="All" className="Electronic-sidebar-label-container">
+              <input
+                type="radio"
+                id="All"
+                name="subcategory"
+                value=""
+                checked={!subCategory}
+                onChange={() => handleSubCategoryChange("")}
+              />
+              <span className="Electronic-checkmark"></span>All
+            </label>
+            {subCategories.map((subCategoryItem) => (
+              <label key={subCategoryItem} className="Electronic-sidebar-label-container">
+                <input
+                  type="radio"
+                  id={subCategoryItem}
+                  name="subcategory"
+                  value={subCategoryItem}
+                  onChange={() => handleSubCategoryChange(subCategoryItem)}
+                />
+                <span className="Electronic-checkmark"></span>
+                {subCategoryItem}
+              </label>
+            ))}
           </div>
-        ))}
-        <button onClick={() => handleColorChange("")}>All</button>
+        </div>
+
+{/* price in sidebar */}
+        <PriceRangeRadioGroup handlePriceRangeChange={handlePriceRangeChange} />
+
+{/* color in sidebar */}
+        <div>
+          <h2 className="Electronic-sidebar-title"> Color</h2>
+          <div className="Electronic-sidebar-label">
+            <label htmlFor="All" className="Electronic-sidebar-label-container">
+              <input
+                type="radio"
+                id="All"
+                name="color"
+                value=""
+                checked={!color}
+                onChange={() => handleColorChange("")}
+              />
+              <span className="Electronic-checkmark"></span>All
+            </label>
+            {colors.map((colorItem) => (
+              <div key={colorItem}>
+                <label htmlFor={colorItem} className="Electronic-sidebar-label-container">
+                  <input
+                    type="radio"
+                    id={colorItem}
+                    name="color"
+                    value={colorItem}
+                    onChange={() => handleColorChange(colorItem)}
+                  />
+                  <span
+                    className="Electronic-checkmark"
+                    style={{
+                      backgroundColor: colorItem,
+                      border: colorItem === "WHITE" ? "1px solid black" : "",
+                    }}
+                  ></span>
+                  {colorItem}
+                </label>
+              </div>
+            ))}
+          </div>
+        </div>
+{/* clear filter */}
+        
+        <button onClick={resetFilters}>Clear Filters</button>
+
       </div>
 
-      <button onClick={resetFilters}>Clear Filters</button>
-
-      {/* Show "No results found" if there are no products after filtering */}
-      {/* {!hasFilteredProducts && <div>No results found</div>} */}
-
-      {filteredProducts.length === 0 ? (
-        <div>Results not found</div>
-      ) : (
-        <div className="Results">
-          {filteredProducts.map((product, index) => (
-            <div className="Electronic-card" key={index}>
-              <Link to={`/Product/${product.productId}`} className="ELectronic-card-img">
-                <img src={frige} alt="img" />
-              </Link>
-              <div className="Electronic-details">
-                <div className="Electronic-card-title">
-                  <h3>{product.productName}</h3>
-                </div>
-                <div className="Electronic-card-review">
-                  <AiFillStar />
-                  <AiFillStar />
-                  <AiFillStar />
-                  <AiFillStar />
-                  <div className="Electronic-total-review"> (123 reviews) </div>
-                </div>
-                <div className="Electronic-price">
-                  ${product.price}
-                  <del>$2000</del>
-                  <div className="Electronic-cart">
-                    <img src={cart} alt="cart" />
+ {/* filter for brand Name    */}
+      <div className="Electronic-product">
+        <div className="Electronic-categories">
+          Brand
+          <div className="Electronic-categories-btns">
+            <button
+              className={`Electronic-btns ${!brand ? "active" : ""}`}
+              onClick={() => handleBrandChange("")}
+            >
+              All
+            </button>
+            {brands.map((brandItem) => (
+              <button
+                key={brandItem}
+                className={`Electronic-btns ${brand === brandItem ? "active" : ""}`}
+                onClick={() => handleBrandChange(brandItem)}
+                style={{
+                  backgroundColor: brand === brandItem ? "lightgrey" : "",
+                }}
+              >
+                {brandItem}
+              </button>
+            ))}
+          </div>
+        </div>
+{/* filtered product item */}
+        <div className="Electronic-product-item">
+          {hasFilteredProducts ? (
+            <div className="Results">
+              {filteredProducts.map((product, index) => (
+                <div className="Electronic-card" key={index}>
+                  <Link
+                    to={`/Product/${product.productId}`}
+                    className="ELectronic-card-img"
+                  >
+                    <img src={frige} alt="img" />
+                  </Link>
+                  <div className="Electronic-details">
+                    <div className="Electronic-card-title">
+                      <>{product.productName}</>
+                    </div>
+                    <div className="Electronic-card-review">
+                      <AiFillStar />
+                      <AiFillStar />
+                      <AiFillStar />
+                      <AiFillStar />
+                      <div className="Electronic-total-review">
+                        {" "}
+                        (123 reviews){" "}
+                      </div>
+                    </div>
+                    <div className="Electronic-price">
+                      ${product.price}
+                      <del>$2000</del>
+                      <div className="Electronic-cart">
+                        <img src={cart} alt="cart" />
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-
-            //     // <div key={product.productId}>
-            //     //   {/* Render product details */}
-            //     //   <h3>{product.productName}</h3>
-            //     //   <p>{product.productDescription}</p>
-            //     //   <p>{product.price}</p>
-            //     //   {/* Add more details as needed */}
-            //     // </div>
-          ))}
+          ) : (
+            <div>No results found</div>
+          )}
         </div>
-      )}
-      {/* Show "Product not found" if there are no products after filtering */}
-      {!hasFilteredProducts && <div>Product not found</div>}
+      </div>
     </>
   );
 };
 
 export default Electronics;
-
-{
-  /* <>
-
-{isLoading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p>Error: {error}</p>
-      ) : (
-        <ProElct>
-          {filteredProducts.map(({ productId, img, productName, star, reviews, price, prevPrice }) => (
-            <Card
-              key={productId}
-              id={productId}
-              // img={img}
-              title={productName}
-              // star={star}
-              // reviews={reviews}
-              newPrice={price}
-              // prevPrice={prevPrice}
-              // cart={cart}
-              // setCart={setCart}
-            />
-          ))}
-        </ProElct>
-      )}
-</> */
-}
