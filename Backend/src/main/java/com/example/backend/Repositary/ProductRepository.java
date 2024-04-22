@@ -1,6 +1,5 @@
 package com.example.backend.Repositary;
 
-import com.example.backend.Model.Category;
 import com.example.backend.Model.Product;
 import com.example.backend.Model.SubCategory;
 import org.springframework.data.jpa.repository.JpaRepository;

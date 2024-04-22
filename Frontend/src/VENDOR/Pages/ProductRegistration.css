@@ -7,11 +7,13 @@
     top: 130px;
     background-color: white;
   width: 690px;
-  height: 520px;
+  height: 610px;
   border-radius: 5px solid black;
-
+ z-index: 1;
 
 }
+
+
 .input-fields {
     
     display: inline-block;
@@ -56,13 +58,13 @@ position: relative;
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     position: absolute;
-    top: 462px;
+    top: 562px;
     cursor: pointer;
   }
 
   
   
-  .reset-button {
+  .reset-button1 {
   
     margin: 3px 0 0 10px;
     background-color: red;
@@ -75,7 +77,8 @@ position: relative;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     position:absolute;
     left: 90px;
-    top: 461px;
+    top: 562px;
     cursor: pointer;
   }
+  
   

@@ -1,39 +1,40 @@
 package com.example.backend.Controller;
 
+import com.example.backend.Payload.ApiResponse;
 import com.example.backend.Payload.OrderDto;
+import com.example.backend.Payload.OrderRequest;
 import com.example.backend.Service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/orders")
-@CrossOrigin(origins = "http://localhost:3000")
 public class OrderController {
-    private final OrderService orderService;
 
     @Autowired
-    public OrderController(OrderService orderService){
-        this.orderService = orderService;
+    private OrderService orderService;
+
+    @PostMapping("/")
+    public ResponseEntity<OrderDto> createOrder(@RequestBody OrderRequest orderRequest, Principal principal) {
+        String Username = principal.getName();
+       OrderDto order = this.orderService.createOrder(orderRequest,Username);
+        return new ResponseEntity<OrderDto>(order, HttpStatus.CREATED);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<OrderDto> createOrder(@RequestBody Map<String, Integer> orderRequest){
-        Long productId = (long) orderRequest.get("productId");
-        Integer quantity = orderRequest.get("quantity");
-        OrderDto createdOrder = orderService.createOrder(productId, quantity);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdOrder);
+    @DeleteMapping("/{orderId}")
+    public ResponseEntity<?> cancelOrderById(@PathVariable Long orderId) {
+        this.orderService.CancelOrder(orderId);
+        return new ResponseEntity<ApiResponse>(new ApiResponse("Order deleted",true),HttpStatus.OK);
     }
 
-
-    @GetMapping("/getAll")
-    public ResponseEntity<List<OrderDto>> getAllOrder(){
-        List<OrderDto> orders = orderService.getAllOrder();
-        return ResponseEntity.ok(orders);
+    @GetMapping("/{orderId}")
+    public ResponseEntity<OrderDto>findOrderById(@PathVariable Long orderId) {
+        OrderDto orderDto = this.orderService.findOrderById(orderId);
+        return new ResponseEntity<OrderDto>(orderDto, HttpStatus.ACCEPTED);
     }
+
 }
