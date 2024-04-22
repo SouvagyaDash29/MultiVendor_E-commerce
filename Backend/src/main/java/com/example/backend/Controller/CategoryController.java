@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/categories")
 @CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/categories")
 public class CategoryController {
 
     @Autowired

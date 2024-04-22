@@ -1,49 +1,91 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-.parent{
+.SignUp{
     display: flex;
-    /* border: 1px solid; */
-    width: 60%;
-    border-radius: 5%;
-    box-shadow: 2px 2px 60px 5px rgba(0, 0, 0, 0.605);
-    position: absolute;
-    top: 140px;
-    left: 20%;
+    justify-content: center;
+    position: relative;
+    top: 1.5vw;
 }
-#simg{
-    border-radius: 5%;
-    object-fit: contain;
-    aspect-ratio: 3/4;
+.signup-page{
+    width: fit-content;
+    display: flex;
+    border: 1px solid black;
+    border-radius: 2vw 2vw 2vw 2vw;
+
 }
-#heading{
-    margin-left: 60px;
-    margin-top: 25px;
-    margin-bottom: 25px;
+.signup-right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FEC88F;
+    border-radius: 2vw 0 0 2vw;
 }
-.main{
-    margin-left: 60px;
-    border-radius: 20px;
-   
-}
-#btn1{
-    padding: 10px 20px;
-    background-color: #25cc3b;
-    color: rgb(13, 12, 12);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-#btn1:hover {
-    background-color: #fcfc11;
-}
-#customerDetails label {
-    display: block;
+.signup-right img{
+    width: 42vw;
+    height: min-content;
+    aspect-ratio: 3/2;
+    object-fit: cover;
     
 }
-#customerDetails input,
-#customerDetails select {
-    margin-bottom: 10px; /* Adjust the value as needed */
+.signup-left{
+    display: flex;
+    flex-direction: column;
+    background-color: #E4FDE0;
+    padding: 4vw;
+    border-radius: 0 2vw 2vw 0;
 }
+.signup-content{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+}
+.signup-content input{
+    height: 2.4vw;
+    border: 1px solid #8ACB88;
+    border-radius: 0.4vw;
+    padding: 0 0 0 0.9vw ;
+}
+.signup-content label{
+    margin: 0.2vw 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    margin-top: 1vw;
+    
+}
+.signup-left svg{
+    font-size: 1.5vw;
+}
+#signup-role{
+    border: 1px solid #8ACB88;
+    height: 2.4vw;
+    border-radius: 0.4vw;
+    padding: 0 0 0 0.9vw ;
+    cursor: pointer;
+}
+.eye-button{
+    position: relative;
+    left: 17.7vw;
+    top: -2.1vw;
+}
+.signup-submit-button input{
+    width:100%;
+    background-color: #FFBF46;
+    color: black;
+}
+/* .signup-left{
+
+    background-color: #E4FDE0;
+    padding: 4vw;
+}
+.signup-content{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+}
+.signup-content input{
+    height: 2vw;
+    background-color: white;
+    border: 1px solid #8ACB88;
+    border-radius: 0.3vw;
+    padding: 0 0 0 0.9vw;
+}
+.signup-content label{
+
+} */

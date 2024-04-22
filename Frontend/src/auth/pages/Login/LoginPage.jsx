@@ -1,49 +1,90 @@
 import React, { useState } from "react";
-import './Login.css'
-import loginphoto from './login.svg'
-import Signuppage from "../Signup/Signuppage";
-import { Link,useNavigate } from "react-router-dom";
+import "./Login.css";
+import loginPhoto from "./login.svg";
+import { Link, useNavigate } from "react-router-dom";
+import { LiaUserSolid } from "react-icons/lia";
+import { RiShieldUserLine } from "react-icons/ri";
+import { MdOutlineMailOutline } from "react-icons/md";
+import { FiLock } from "react-icons/fi";
+import { VscEye, VscEyeClosed } from "react-icons/vsc";
 
 const LoginPage = () => {
-    const navigate = useNavigate()
-    const[role,setrole]=useState('');
-    const handlechange = (event) =>{
-        event.preventDefault();
-        alert(role)
-        if(role==="customer"){navigate("/customer")}
-        else {navigate("/vender")}
+  const [role, setRole] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    if (role === "customer") {
+      navigate("/customer");
+    } else if (role === "vendor") {
+      navigate("/vendor");
     }
-  return <div>
-     <div class="parent">
-        <div class="child1">
-            <img id="limg" src={loginphoto} alt="" height="500px " width="500px" class="rounded-lg"/>
-        </div>
-        <div style={{marginLeft:'15px'}} id="customerDetails" >
-           <h3 class="" id="heading">Please Login here!!!!!!</h3>
-           <div class="" >
-            <label for="" class="">Name here</label>
-            <input type="text" class=""/>
-            <label for="" class="">Email here</label>
-            <input type="email" class=""/>
-            <label for="" class="">Role</label>
-            <select class="" onChange={(e)=>setrole(e.target.value)}>
-            <option value="customer">Customer</option>
-            <option value="vendor">Vendor</option>
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  return (
+    <div className="Login-page">
+      <div className="Login-content">
+        <div className="Login-left">
+          <h3 className="Login-Head">Please Login here!!!!!!</h3>
+          <div className="Login-Input">
+            <label htmlFor="id">
+              <LiaUserSolid />
+              Name
+            </label>
+            <input id="id" type="text" placeholder="Enter your Name" />
+
+            <label htmlFor="email" className="Email">
+              <MdOutlineMailOutline />
+              Email
+            </label>
+            <input type="email" id="email" placeholder="Enter your Email" />
+            <label htmlFor="role">
+              <RiShieldUserLine />
+              Role
+            </label>
+            <select id="Role" onChange={(e) => setRole(e.target.value)}>
+              <option value="customer">Customer</option>
+              <option value="vendor">Vendor</option>
             </select>
-            <label for="" class="">Password</label>
-            <input type="password" class=""/>
-            
+            <label htmlFor="password" className="passWord">
+              <FiLock />
+              Password
+            </label>
+            <div className="password-input">
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                placeholder="Enter your password"
+              />
+              <span
+                className="toggle-password"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <VscEyeClosed /> : <VscEye />}
+              </span>
+            </div>
+          </div>
+          <div className="signUp-section">
+            <h6>
+              Don't have an Account? <Link to="/SignUp">Sign Up here</Link>
+            </h6>
+          </div>
+          <div className="Login-button">
+            <button className="button" onClick={handleLogin}>
+              Login
+            </button>
+          </div>
         </div>
-        <div class="">
-            <h6>Do'nt have Account?? <Link to='/signup'>SignUp here</Link></h6>
+        <div className="Login-right">
+          <img src={loginPhoto} alt="img" />
         </div>
-        <div class="">
-            <button class="" id="btn1" onClick={handlechange}>Login</button>
-        </div>
-        </div>
+      </div>
     </div>
-    
-  </div>;
+  );
 };
 
 export default LoginPage;
