@@ -43,6 +43,7 @@ public class User  {    // public class User implements UserDetails
     private Date date;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
     Set<Roles> role = new HashSet<>();
 
     @OneToOne(mappedBy = "user")
