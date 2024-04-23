@@ -17,6 +17,7 @@ public class UserDto {
     private Date date;
     @JsonBackReference
     private CartDto cart;
+    private Long roleId;
 
     public Long getUserId() {
         return userId;
@@ -88,5 +89,13 @@ public class UserDto {
 
     public void setCart(CartDto cart) {
         this.cart = cart;
+    }
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 }

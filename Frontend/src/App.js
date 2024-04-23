@@ -23,13 +23,13 @@ function App() {
     <>
       <Router>
         {/* <Buyer /> */}
-        <Vendor />
+        {/* <Vendor /> */}
         {/* <Test /> */}
         {/* <LoginPage/> */}
-        {/* <Routes>
-          <Route element={<Signuppage/>} path={"/signup"}></Route>
-          <Route element={<LoginPage/>} path={"/login"}></Route>
-        </Routes> */}
+        <Routes>
+          <Route element={<Signuppage />} path={"/signup"}></Route>
+          <Route element={<LoginPage />} path={"/login"}></Route>
+        </Routes>
         {/* If u want to run Login & signup page then comment buyer & vendor camponents. All the sign up & login page call in text component*/}
         {/* If u want to run  buyer or vendor page u can comment out according to your needs*/}
       </Router>

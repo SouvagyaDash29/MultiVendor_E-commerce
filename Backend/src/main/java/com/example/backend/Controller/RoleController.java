@@ -3,14 +3,14 @@ package com.example.backend.Controller;
 import com.example.backend.Model.Roles;
 import com.example.backend.Service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/roles")
+@CrossOrigin(origins = "http://localhost:3000")
 public class RoleController {
 
     @Autowired
@@ -19,5 +19,14 @@ public class RoleController {
     @GetMapping
     public List<Roles> getAllRoles() {
         return roleService.getAllRoles();
+    }
+    @GetMapping("/{roleId}")
+    public ResponseEntity<Roles> findById(@PathVariable Long roleId) {
+        Roles role = roleService.findById(roleId);
+        if (role != null) {
+            return ResponseEntity.ok(role);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

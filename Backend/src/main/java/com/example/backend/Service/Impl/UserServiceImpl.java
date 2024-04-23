@@ -1,9 +1,12 @@
 package com.example.backend.Service.Impl;
 
 import com.example.backend.Exception.ResourceNotFoundException;
+import com.example.backend.Model.Roles;
 import com.example.backend.Model.User;
 import com.example.backend.Payload.UserDto;
+import com.example.backend.Repositary.RoleRepository;
 import com.example.backend.Repositary.UserRepository;
+import com.example.backend.Service.RoleService;
 import com.example.backend.Service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,11 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private ModelMapper mapper;
 
+    @Autowired
+    private RoleService roleService;
+    @Autowired
+    private RoleRepository roleRepository;
+
 //    @Autowired
 //    private PasswordEncoder passwordEncoder;
 
@@ -33,6 +41,12 @@ public class UserServiceImpl implements UserService {
 //        String encode = this.passwordEncoder.encode(pass);
 //        System.out.println("encode: " + encode);
 //        user.setPassword(encode);
+        if (userDto.getRoleId() != null) {
+            Roles role = roleRepository.findById(userDto.getRoleId()).orElseThrow(()-> new ResourceNotFoundException("Role not found"));
+            if (role != null) {
+                user.getRole().add(role);
+            }
+        }
         User saveUser = this.userRepository.save(user);
         UserDto saveUserDto = this.mapper.map(saveUser, UserDto.class);
         return saveUserDto;
