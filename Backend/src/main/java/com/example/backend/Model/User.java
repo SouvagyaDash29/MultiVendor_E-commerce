@@ -4,9 +4,9 @@ package com.example.backend.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.authority.SimpleGrantedAuthority;
+//import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.*;
@@ -14,14 +14,14 @@ import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "user_info")
-public class User implements UserDetails {
+public class User  {    // public class User implements UserDetails
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "user_id")    // Remove if any error
     private Long userId;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String name;
 
     @Column(unique = true, nullable = false)
@@ -30,13 +30,13 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String address;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String gender;
 
-    @Column(nullable = false, length = 10)
+//    @Column(nullable = false, length = 10)
     private String phone;
 
     @Column(name = "CreateAt")
@@ -51,36 +51,36 @@ public class User implements UserDetails {
 
 
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<SimpleGrantedAuthority> collect = this.role.stream().map(r -> new SimpleGrantedAuthority(r.getRoleName())).collect(Collectors.toList());
-        return List.of();
-    }
-
-    @Override
-    public String getUsername() {
-        return this.email;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        List<SimpleGrantedAuthority> collect = this.role.stream().map(r -> new SimpleGrantedAuthority(r.getRoleName())).collect(Collectors.toList());
+//        return List.of();
+//    }
+//
+//    @Override
+//    public String getUsername() {
+//        return this.email;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonLocked() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isCredentialsNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isEnabled() {
+//        return true;
+//    }
 
     public Long getUserId() {
         return userId;
@@ -106,7 +106,7 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-    @Override
+//    @Override
     public String getPassword() {
         return password;
     }
