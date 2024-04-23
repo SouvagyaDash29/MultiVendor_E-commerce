@@ -1,0 +1,67 @@
+package com.example.backend.Service.Impl;
+
+import com.example.backend.Exception.ResourceNotFoundException;
+import com.example.backend.Model.User;
+import com.example.backend.Payload.UserDto;
+import com.example.backend.Repositary.UserRepository;
+import com.example.backend.Service.UserService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private ModelMapper mapper;
+
+    @Override
+    public UserDto createUser(UserDto userDto) {
+        User user = this.mapper.map(userDto, User.class);
+        User saveUser = this.userRepository.save(user);
+        UserDto saveUserDto = this.mapper.map(saveUser, UserDto.class);
+        return saveUserDto;
+    }
+
+    @Override
+    public UserDto getById(Long userId) {
+        User findByUserId = this.userRepository.findByUserId(userId).orElseThrow(()-> new ResourceNotFoundException("User not found by this id " + userId));
+        UserDto userDto = this.mapper.map(findByUserId, UserDto.class);
+        return userDto;
+    }
+
+    @Override
+    public void deleteUser(Long userId) {
+        User findByUserId = this.userRepository.findByUserId(userId).orElseThrow(()-> new ResourceNotFoundException("User not found by this id " + userId));
+         this.userRepository.delete(findByUserId);
+    }
+
+    @Override
+    public List<UserDto> findAllUsers() {
+        List<User> findAll = this.userRepository.findAll();
+        List<UserDto> collect =  findAll.stream().map(each -> this.mapper.map(each, UserDto.class)).collect(Collectors.toList());
+        return collect;
+    }
+
+    @Override
+    public UserDto updateUser(Long userId, UserDto userDto) {
+        User existingUser = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found by this id: " + userId));
+        existingUser.setName(userDto.getName());
+        existingUser.setEmail(userDto.getEmail());
+        existingUser.setPassword(userDto.getPassword());
+        existingUser.setAddress(userDto.getAddress());
+        existingUser.setGender(userDto.getGender());
+        existingUser.setPhone(userDto.getPhone());
+        User updatedUser = userRepository.save(existingUser);
+        return mapper.map(updatedUser, UserDto.class);
+    }
+
+}
