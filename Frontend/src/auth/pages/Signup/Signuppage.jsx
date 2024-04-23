@@ -81,7 +81,10 @@ const Signuppage = () => {
               <h6>
                 Already have an Account? <Link to="/login">Login here</Link>
               </h6>
+<<<<<<< HEAD
+=======
 
+>>>>>>> a4081a521a57f83f9243347b41b702f7d8f368aa
             </div>
             <div className="signup-submit-button">
               <input type="submit" id="" />
