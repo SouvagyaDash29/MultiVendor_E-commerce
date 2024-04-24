@@ -7,6 +7,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.authority.SimpleGrantedAuthority;
+//import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.*;
@@ -14,14 +17,14 @@ import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "user_info")
-public class User implements UserDetails {
+ public class User implements UserDetails {    // public class User implements UserDetails
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "user_id")    // Remove if any error
     private Long userId;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String name;
 
     @Column(unique = true, nullable = false)
@@ -30,19 +33,20 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String address;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String gender;
 
-    @Column(nullable = false, length = 10)
+//    @Column(nullable = false, length = 10)
     private String phone;
 
     @Column(name = "CreateAt")
     private Date date;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
     Set<Roles> role = new HashSet<>();
 
     @OneToOne(mappedBy = "user")

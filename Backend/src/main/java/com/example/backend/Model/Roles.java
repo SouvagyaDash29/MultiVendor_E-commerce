@@ -2,6 +2,8 @@ package com.example.backend.Model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,6 +22,7 @@ public class Roles {
     private String roleName;
 
     @ManyToMany(mappedBy = "role")
+    @JsonIgnore
     Set<User> users = new HashSet<>();
 
     public Long getRoleId() {

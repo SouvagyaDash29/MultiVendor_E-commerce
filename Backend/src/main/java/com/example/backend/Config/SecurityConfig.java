@@ -22,7 +22,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -30,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private CustomUserDetailService customUserDetailService;
-    public static String[] PUBLIC_URL = {"/auth/login"};             // "/cart/","/products/create","/auth/login","/users/create"
+    public static String[] PUBLIC_URL = {"/auth/login", "/users/create", "/roles"};             // "/cart/","/products/create","/auth/login","/users/create"
 
     @Autowired
     private JwtAuthenticationFilter filter;
@@ -82,7 +81,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         configuration.setAllowCredentials(true);
         configuration.addAllowedOriginPattern("*");
         configuration.addAllowedHeader("Authorization");
-        configuration.addAllowedHeader("Context-Type");
+        configuration.addAllowedHeader("Content-Type");
         configuration.addAllowedHeader("Accept");
         configuration.addAllowedMethod("POST");
         configuration.addAllowedMethod("GET");

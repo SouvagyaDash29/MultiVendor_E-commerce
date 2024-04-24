@@ -1,23 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import loginPhoto from "./login.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { LiaUserSolid } from "react-icons/lia";
-import { RiShieldUserLine } from "react-icons/ri";
 import { MdOutlineMailOutline } from "react-icons/md";
-import { FiLock } from "react-icons/fi";
+import { RiShieldUserLine } from "react-icons/ri";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
+import { FiLock } from "react-icons/fi";
+import axios from "axios";
 
 const LoginPage = () => {
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState([]);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    if (role === "customer") {
-      navigate("/customer");
-    } else if (role === "vendor") {
-      navigate("/vendor");
+  const loginUser = (data) => {
+    return axios.post(`http://localhost:8080/auth/login`, data).then((response) => response.data);
+  };
+
+  useEffect(() => {
+    fetchRoles();
+  }, []);
+
+  const fetchRoles = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/roles");
+      setRole(response.data);
+    } catch (error) {
+      console.error("Error fetching roles:", error);
+    }
+  };
+
+  const handleLogin = async () => {
+    const loginData = {
+      email: document.getElementById("email").value,
+      password: document.getElementById("password").value,
+      roleId: role
+    };
+
+    try {
+      const userData = await loginUser(loginData);
+      console.log(userData);
+
+      if (userData.token) {
+        if (role === "customer") {
+          navigate("/customer");
+        } else if (role === "vendor") {
+          navigate("/vendor");
+        }
+      } else {
+        console.error("Login failed:", userData.message);
+      }
+    } catch (error) {
+      console.log("Login failed:", error);
     }
   };
 
@@ -31,27 +65,31 @@ const LoginPage = () => {
         <div className="Login-left">
           <h3 className="Login-Head">Please Login here!!!!!!</h3>
           <div className="Login-Input">
-            <label htmlFor="id">
-              <LiaUserSolid />
-              Name
-            </label>
-            <input id="id" type="text" placeholder="Enter your Name" />
-
             <label htmlFor="email" className="Email">
               <MdOutlineMailOutline />
               Email
             </label>
             <input type="email" id="email" placeholder="Enter your Email" />
-            <label htmlFor="role">
+            <label htmlFor="signup-role" className="">
               <RiShieldUserLine />
               Role
             </label>
-            <select id="Role" onChange={(e) => setRole(e.target.value)}>
-              <option value="customer">Customer</option>
-              <option value="vendor">Vendor</option>
+            <select
+              id="signup-role"
+              className=""
+              name="role"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+            >
+              <option value="">Select Role</option>
+              {role.map((role) => (
+                <option key={role.roleId} value={role.roleId}>
+                  {role.roleName}
+                </option>
+              ))}
             </select>
             <label htmlFor="password" className="passWord">
-              <FiLock />
+              {/* <FiLock /> */}
               Password
             </label>
             <div className="password-input">
