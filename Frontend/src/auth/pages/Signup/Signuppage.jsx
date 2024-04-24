@@ -16,7 +16,10 @@ const Signuppage = () => {
     name: "",
     email: "",
     password: "",
-    roleId: "" // Add roleId to userData
+    roleId: "",
+    address: "", 
+    gender: "", 
+    phone: "" 
   });
   const [roles, setRoles] = useState([]);
 
@@ -107,9 +110,9 @@ const Signuppage = () => {
             <select
               id="signup-role"
               className=""
-              name="roleId"
-              value={userData.roleId}
-              onChange={handleChange}
+              name="role"
+              value={userData.role}
+              onChange={(e) => handleRoleSelection(e.target.value)}
             >
               <option value="">Select Role</option>
               {roles.map((role) => (

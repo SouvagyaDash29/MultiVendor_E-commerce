@@ -13,6 +13,7 @@ import java.security.Principal;
 
 @RestController
 @RequestMapping("/orders")
+@CrossOrigin("http://localhost:3000")
 public class OrderController {
 
     @Autowired

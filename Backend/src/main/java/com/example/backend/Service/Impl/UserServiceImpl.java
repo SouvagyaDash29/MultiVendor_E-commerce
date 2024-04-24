@@ -11,6 +11,7 @@ import com.example.backend.Service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,16 +32,16 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private RoleRepository roleRepository;
 
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDto createUser(UserDto userDto) {
         User user = this.mapper.map(userDto, User.class);
-//        String pass = user.getPassword();
-//        String encode = this.passwordEncoder.encode(pass);
-//        System.out.println("encode: " + encode);
-//        user.setPassword(encode);
+        String pass = user.getPassword();
+        String encode = this.passwordEncoder.encode(pass);
+        System.out.println("encode: " + encode);
+        user.setPassword(encode);
         if (userDto.getRoleId() != null) {
             Roles role = roleRepository.findById(userDto.getRoleId()).orElseThrow(()-> new ResourceNotFoundException("Role not found"));
             if (role != null) {

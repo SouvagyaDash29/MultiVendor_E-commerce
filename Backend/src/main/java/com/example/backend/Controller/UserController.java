@@ -20,7 +20,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/create")
-    public ResponseEntity<UserDto>createUser(@RequestBody UserDto userDto){
+    public ResponseEntity<?>createUser(@RequestBody UserDto userDto){
         Date date = new Date();
         userDto.setDate(date);
         UserDto createUser = this.userService.createUser(userDto);
