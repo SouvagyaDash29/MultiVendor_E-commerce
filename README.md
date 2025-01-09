@@ -4,10 +4,10 @@ Welcome to the **MultiVendor E-commerce Platform**! This project is a comprehens
 
 ## Table of Contents
 
-- [🚀 Features](#-features)
+- [🌟 Features](#-features)
 - [🛠️ Technologies Used](#-technologies-used)
 - [📂 Project Structure](#-project-structure)
-- [🛠️ Installation](#-installation)
+- [🚀 Getting Started](#-getting-started)
 - [📸 Screenshots](#-screenshots)
 - [📧 Contact](#-contact)
 
@@ -19,14 +19,15 @@ Welcome to the **MultiVendor E-commerce Platform**! This project is a comprehens
 - **Shopping Cart**: Users can add products to their cart and proceed to checkout.
 - **Order Management**: Vendors can manage orders placed by users.
 
-## Technologies Used
+## 🛠️ Technologies Used
+
 **Frontend**:
   - ⚛️ React.js
   - 🎨 CSS
 
 **Backend**:
   - 🟢 Springboot
-  -  📦 Mysql
+  - 📦 Mysql
 
 ## 📂 Project Structure
 
@@ -37,7 +38,7 @@ The repository is organized as follows:
 - **Images/**: Contains image assets used in the project.
 - **.env.txt**: Sample environment configuration file.
 
-## 🛠️ Installation
+## 🚀 Getting Started
 
 To set up the project locally, follow these steps:
 
@@ -46,6 +47,7 @@ To set up the project locally, follow these steps:
    ```bash
    git clone https://github.com/SouvagyaDash29/MultiVendor_E-commerce.git
    cd MultiVendor_E-commerce
+   
 2. **Backend Setup**: 🛠️
 
    - Navigate to the `Backend` directory:
