@@ -4,10 +4,10 @@ Welcome to the **MultiVendor E-commerce Platform**! This project is a comprehens
 
 ## Table of Contents
 
-- [🚀 Features](#features)
-- [🛠️ Technologies Used](#️technologies-used)
-- [📂 Project Structure](#project-structure)
-- [🛠️ Installation](#️-installation)
+- [🚀 Features](#-features)
+- [🛠️ Technologies Used](#-technologies-used)
+- [📂 Project Structure](#-project-structure)
+- [🛠️ Installation](#-installation)
 - [📸 Screenshots](#-screenshots)
 - [📧 Contact](#-contact)
 
@@ -19,7 +19,7 @@ Welcome to the **MultiVendor E-commerce Platform**! This project is a comprehens
 - **Shopping Cart**: Users can add products to their cart and proceed to checkout.
 - **Order Management**: Vendors can manage orders placed by users.
 
-## 🛠️ Technologies Used
+## Technologies Used
 **Frontend**:
   - ⚛️ React.js
   - 🎨 CSS
