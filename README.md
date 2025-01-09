@@ -5,7 +5,7 @@ Welcome to the **MultiVendor E-commerce Platform**! This project is a comprehens
 ## Table of Contents
 
 - [🌟 Features](#-features)
-- [🛠️ Technologies Used](#-technologies-used)
+- [🛠️ Technologies Used](#%EF%B8%8F-technologies-used)
 - [📂 Project Structure](#-project-structure)
 - [🚀 Getting Started](#-getting-started)
 - [📸 Screenshots](#-screenshots)
